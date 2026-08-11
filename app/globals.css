@@ -4384,12 +4384,12 @@ body:hover .custom-cursor {
     position: relative;
     z-index: 10;
     background: 
-        radial-gradient(circle at 12% 25%, rgba(78, 101, 80, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 88% 75%, rgba(217, 191, 119, 0.22) 0%, transparent 50%),
-        linear-gradient(135deg, #ebf3ec 0%, #dce8de 40%, #d0e1d3 75%, #e5efe7 100%) !important;
+        radial-gradient(circle at 15% 20%, rgba(217, 191, 119, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(78, 101, 80, 0.3) 0%, transparent 50%),
+        linear-gradient(180deg, #161d18 0%, #1e2420 50%, #121714 100%) !important;
     background-size: 200% 200% !important;
     animation: diosaSageGradientShift 14s ease infinite !important;
-    color: var(--text-primary);
+    color: var(--text-light);
     padding: 95px 0;
     overflow: hidden;
 }
