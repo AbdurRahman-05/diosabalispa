@@ -1,44 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 
-const branches = [
-  {
-    city: 'Madurai',
-    badge: 'Madurai Sanctuary',
-    address: 'Plot no - 17, K.K Nagar, East 1st Cross Street, opp. to Aishwarya silks, near MIOT Hospital, Melur Main Rd, Madurai - 625020.',
-    phone: '+91-93447 81164',
-    mapUrl: 'https://www.google.com/maps/place/Diosa+Bali+Spa/@9.9377056,78.1461347,17z'
-  },
-  {
-    city: 'Kumbakonam',
-    badge: 'Kumbakonam Sanctuary',
-    address: 'Cholaa Dynasty Hotel, 2/9, Labour Office Street, Sundaraperumal kovil, Thiruvalanjuli, Kumbakonam - 614208.',
-    phone: '+91-80565 54539',
-    mapUrl: 'https://www.google.com/maps/place/Diosa+Bali+Spa+(Cholaa+Dynasty)/@10.9418678,79.3140704,17z'
-  },
-  {
-    city: 'Coimbatore',
-    badge: 'Coimbatore Sanctuary',
-    address: 'No.9, Lakshmi Urshimha Graham, L.N Nagar, Thulasi Garden, Nehru Nagar West, Kalapatti, Coimbatore - 641048.',
-    phone: '+91-90250 06428',
-    mapUrl: 'https://www.google.com/maps/place/Diosa+Bali+Spa+-+Coimbatore/@11.0647739,77.0284834,983m'
-  },
-  {
-    city: 'Dindigul',
-    badge: 'Dindigul Sanctuary',
-    address: 'D.no M2/3, RM Colony, 2nd Cross St, Dindigul - 624001.',
-    phone: '+91-93447 81164',
-    mapUrl: 'https://www.google.com/maps'
-  },
-  {
-    city: 'Pondicherry',
-    badge: 'Pondicherry Sanctuary',
-    address: 'Grand Serene Hotel, ECR Road, Lawspet, Pondicherry - 605008.',
-    phone: '+91-93447 81164',
-    mapUrl: 'https://www.google.com/maps'
-  }
-];
+const BranchMap = dynamic(() => import('../components/BranchMap'), {
+  ssr: false,
+  loading: () => (
+    <div style={{ padding: '60px 0', textAlign: 'center', color: 'var(--accent-gold)' }}>
+      Loading Sanctuary Map...
+    </div>
+  )
+});
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', branch: 'Madurai', message: '' });
@@ -70,25 +42,45 @@ export default function ContactPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
             
             <div style={{ background: 'var(--bg-secondary)', padding: '25px', borderRadius: '16px', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', marginBottom: '10px' }}>🌐</div>
+              <div style={{ width: '56px', height: '56px', margin: '0 auto 14px auto', borderRadius: '50%', background: 'rgba(217,191,119,0.15)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)' }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
               <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--accent-gold)' }}>Website</h4>
               <a href="https://diosabalispa.in" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', opacity: 0.85, textDecoration: 'none' }}>www.diosabalispa.in</a>
             </div>
 
             <div style={{ background: 'var(--bg-secondary)', padding: '25px', borderRadius: '16px', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', marginBottom: '10px' }}>✉️</div>
+              <div style={{ width: '56px', height: '56px', margin: '0 auto 14px auto', borderRadius: '50%', background: 'rgba(217,191,119,0.15)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)' }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
               <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--accent-gold)' }}>Email Helpline</h4>
               <a href="mailto:diosabalispa@gmail.com" style={{ color: 'var(--text-primary)', opacity: 0.85, textDecoration: 'none' }}>diosabalispa@gmail.com</a>
             </div>
 
             <div style={{ background: 'var(--bg-secondary)', padding: '25px', borderRadius: '16px', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', marginBottom: '10px' }}>📞</div>
+              <div style={{ width: '56px', height: '56px', margin: '0 auto 14px auto', borderRadius: '50%', background: 'rgba(217,191,119,0.15)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)' }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
               <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--accent-gold)' }}>Direct Phone</h4>
               <a href="tel:+919344781164" style={{ color: 'var(--text-primary)', opacity: 0.85, textDecoration: 'none' }}>+91 9344781164</a>
             </div>
 
             <div style={{ background: 'var(--bg-secondary)', padding: '25px', borderRadius: '16px', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', marginBottom: '10px' }}>🕒</div>
+              <div style={{ width: '56px', height: '56px', margin: '0 auto 14px auto', borderRadius: '50%', background: 'rgba(217,191,119,0.15)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)' }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
               <h4 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--accent-gold)' }}>Sanctuary Hours</h4>
               <span style={{ color: 'var(--text-primary)', opacity: 0.85 }}>Mon – Sun: 8:00 AM – 9:00 PM</span>
             </div>
@@ -97,37 +89,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* BRANCH LOCATIONS */}
-      <section style={{ padding: '40px 0' }}>
-        <div className="container">
-          <div className="text-center" style={{ marginBottom: '40px' }}>
-            <span className="section-tagline">SANCTUARY LOCATIONS</span>
-            <h2 className="section-title">Our Branches</h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px' }}>
-            {branches.map((b, idx) => (
-              <div key={idx} style={{ background: 'var(--bg-secondary)', borderRadius: '18px', padding: '30px', border: '1px solid var(--glass-border)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <span style={{ background: 'rgba(217,191,119,0.15)', color: 'var(--accent-gold-dark)', padding: '4px 12px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase' }}>
-                    {b.badge}
-                  </span>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: 'var(--accent-gold)', margin: '12px 0 8px 0' }}>{b.city}</h3>
-                  <p style={{ fontSize: '0.9rem', opacity: 0.85, lineHeight: 1.6, marginBottom: '20px' }}>{b.address}</p>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--glass-border)', paddingTop: '15px' }}>
-                  <a href={`tel:${b.phone}`} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: '600', fontSize: '0.85rem' }}>
-                    📞 {b.phone}
-                  </a>
-                  <a href={b.mapUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-gold)', textDecoration: 'none', fontSize: '0.85rem', fontWeight: '600' }}>
-                    Map ↗
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* INTERACTIVE BRANCH MAP */}
+      <BranchMap />
 
       {/* INQUIRY FORM */}
       <section style={{ padding: '40px 0 100px 0' }}>
