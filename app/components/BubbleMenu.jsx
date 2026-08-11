@@ -164,6 +164,21 @@ export default function BubbleMenu({
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen, menuItems]);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const defaultLogo = (
     <Link href="/" onClick={handleClose} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
       <img
@@ -177,7 +192,16 @@ export default function BubbleMenu({
   return (
     <>
       <nav className={containerClassName} style={style} aria-label="Main navigation">
-        <div className="bubble logo-bubble" aria-label="Logo">
+        <div
+          className="bubble logo-bubble"
+          aria-label="Logo"
+          style={{
+            opacity: isScrolled ? 0 : 1,
+            transform: isScrolled ? 'translateY(-20px)' : 'translateY(0)',
+            pointerEvents: isScrolled ? 'none' : 'auto',
+            transition: 'opacity 0.4s ease, transform 0.4s ease'
+          }}
+        >
           <span className="logo-content">
             {logo ? (
               typeof logo === 'string' ? <img src={logo} alt="Logo" className="bubble-logo" /> : logo

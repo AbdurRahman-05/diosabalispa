@@ -109,38 +109,38 @@ export default function TherapyPage() {
                 className="dat-card"
                 style={{
                   background: 'var(--bg-secondary)',
-                  borderRadius: '16px',
+                  borderRadius: '18px',
                   overflow: 'hidden',
-                  border: '1px solid var(--glass-border)',
-                  boxShadow: 'var(--shadow-soft)',
+                  border: '1.5px solid var(--accent-gold)',
+                  boxShadow: '0 8px 24px rgba(30, 36, 32, 0.08)',
                   display: 'flex',
                   flexDirection: 'column',
-                  transition: 'transform 0.3s ease'
+                  transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease'
                 }}
               >
                 <div style={{ height: '220px', overflow: 'hidden', position: 'relative' }}>
                   <img src={t.img} alt={t.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <span style={{ position: 'absolute', top: '15px', left: '15px', background: 'rgba(30,36,32,0.85)', color: 'var(--accent-gold)', padding: '5px 14px', borderRadius: '15px', fontSize: '0.75rem', fontWeight: '600' }}>
+                  <span style={{ position: 'absolute', top: '15px', left: '15px', background: 'rgba(30,36,32,0.88)', color: 'var(--accent-gold)', padding: '6px 16px', borderRadius: '15px', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.5px' }}>
                     RITUAL 0{idx + 1}
                   </span>
                 </div>
                 <div style={{ padding: '25px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: 'var(--accent-gold)', marginBottom: '10px' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: 'var(--accent-gold-dark)', fontWeight: '600', marginBottom: '10px' }}>
                     {t.title}
                   </h3>
-                  <p style={{ fontSize: '0.92rem', opacity: 0.85, lineHeight: 1.6, flexGrow: 1, marginBottom: '20px' }}>
+                  <p style={{ fontSize: '0.94rem', color: '#1e2420', fontWeight: '500', opacity: 1, lineHeight: 1.6, flexGrow: 1, marginBottom: '20px' }}>
                     {t.desc}
                   </p>
                   <div style={{ display: 'flex', gap: '10px' }}>
                     <button
                       onClick={() => setSelectedTreatment(t)}
-                      style={{ padding: '10px 18px', border: '1px solid var(--accent-gold)', background: 'transparent', color: 'var(--text-primary)', borderRadius: '20px', cursor: 'pointer', fontSize: '0.85rem' }}
+                      style={{ padding: '10px 18px', border: '1.5px solid var(--accent-gold)', background: 'transparent', color: '#1e2420', fontWeight: '600', borderRadius: '20px', cursor: 'pointer', fontSize: '0.85rem' }}
                     >
                       Quick View
                     </button>
                     <Link
                       href="/booking"
-                      style={{ padding: '10px 20px', background: 'var(--accent-gold)', color: '#1e2420', borderRadius: '20px', textDecoration: 'none', fontWeight: '600', fontSize: '0.85rem' }}
+                      style={{ padding: '10px 20px', background: 'var(--accent-gold)', color: '#1e2420', borderRadius: '20px', textDecoration: 'none', fontWeight: '700', fontSize: '0.85rem' }}
                     >
                       Reserve
                     </Link>

@@ -5079,6 +5079,37 @@ body:hover .custom-cursor {
     }
 }
 
+/* ==========================================
+   TREATMENT CARDS & RITUAL BOXES BORDER & THICK TEXT
+   ========================================== */
+.dat-card,
+.diosa-combo-card {
+    border: 1.5px solid var(--accent-gold, #d9bf77) !important;
+    box-shadow: 0 8px 24px rgba(30, 36, 32, 0.08) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.dat-card:hover,
+.diosa-combo-card:hover {
+    border-color: var(--accent-gold-dark, #b69c4a) !important;
+    box-shadow: 0 12px 30px rgba(217, 191, 119, 0.25) !important;
+}
+
+.dat-card p,
+.dat-card .dat-desc,
+.diosa-card-details {
+    color: #1e2420 !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+    line-height: 1.6 !important;
+}
+
+.dat-card h3,
+.diosa-card-title {
+    color: var(--accent-gold-dark, #b69c4a) !important;
+    font-weight: 600 !important;
+}
+
 
 
 
