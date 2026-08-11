@@ -351,47 +351,117 @@ export default function BranchMap() {
         {/* ALL BRANCHES OVERVIEW GRID WHEN 'ALL' IS SELECTED */}
         {activeBranch === 'all' && (
           <div style={{
-            marginTop: '25px',
+            marginTop: '45px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '15px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+            gap: '30px 20px',
+            paddingBottom: '20px'
           }}>
             {branches.map((b) => (
               <div
                 key={b.id}
                 onClick={() => handleSelectBranch(b.id)}
                 style={{
+                  position: 'relative',
                   background: 'var(--bg-secondary)',
-                  padding: '16px',
-                  borderRadius: '16px',
+                  padding: '30px 20px 20px 20px',
+                  borderRadius: '26px 26px 14px 14px',
                   border: '1px solid var(--glass-border)',
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   display: 'flex',
                   flexDirection: 'column',
-                  justify: 'space-between'
+                  justifyContent: 'space-between',
+                  minHeight: '190px',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.08)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--accent-gold)';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.transform = 'translateY(-6px)';
+                  e.currentTarget.style.boxShadow = '0 14px 30px rgba(217,191,119,0.2)';
+                  const tip = e.currentTarget.querySelector('.map-pin-tip');
+                  if (tip) tip.style.borderColor = 'var(--accent-gold)';
+                  const badge = e.currentTarget.querySelector('.map-pin-badge');
+                  if (badge) badge.style.transform = 'translateX(-50%) scale(1.15)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'var(--glass-border)';
                   e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+                  const tip = e.currentTarget.querySelector('.map-pin-tip');
+                  if (tip) tip.style.borderColor = 'var(--glass-border)';
+                  const badge = e.currentTarget.querySelector('.map-pin-badge');
+                  if (badge) badge.style.transform = 'translateX(-50%) scale(1)';
                 }}
               >
-                <div>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--accent-gold-dark)', fontWeight: '700', textTransform: 'uppercase' }}>
+                {/* TOP MAP PIN ICON BADGE */}
+                <div 
+                  className="map-pin-badge"
+                  style={{
+                    position: 'absolute',
+                    top: '-20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, var(--accent-gold) 0%, #b69c4a 100%)',
+                    color: '#1e2420',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 6px 16px rgba(217,191,119,0.35)',
+                    border: '2px solid var(--bg-primary)',
+                    zIndex: 3,
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+
+                {/* BOTTOM POINTER TIP OF MAP PIN */}
+                <div 
+                  className="map-pin-tip"
+                  style={{
+                    position: 'absolute',
+                    bottom: '-9px',
+                    left: '50%',
+                    transform: 'translateX(-50%) rotate(45deg)',
+                    width: '16px',
+                    height: '16px',
+                    background: 'var(--bg-secondary)',
+                    borderRight: '1px solid var(--glass-border)',
+                    borderBottom: '1px solid var(--glass-border)',
+                    zIndex: 2,
+                    transition: 'all 0.3s ease'
+                  }} 
+                />
+
+                <div style={{ textAlign: 'center', paddingTop: '4px' }}>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--accent-gold-dark)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px' }}>
                     {b.city}
                   </span>
-                  <h5 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--accent-gold)', margin: '4px 0' }}>
+                  <h5 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem', color: 'var(--accent-gold)', margin: '4px 0 8px 0' }}>
                     {b.city} Sanctuary
                   </h5>
-                  <p style={{ fontSize: '0.75rem', opacity: 0.8, lineHeight: 1.3, marginBottom: '10px' }}>
+                  <p style={{ fontSize: '0.78rem', opacity: 0.85, lineHeight: 1.4, marginBottom: '12px' }}>
                     {b.address}
                   </p>
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '4px' }}>
+
+                <div style={{ 
+                  fontSize: '0.78rem', 
+                  color: 'var(--accent-gold)', 
+                  fontWeight: '700', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  gap: '4px',
+                  borderTop: '1px solid var(--glass-border)',
+                  paddingTop: '10px'
+                }}>
                   Focus on Map ↗
                 </div>
               </div>
