@@ -3492,52 +3492,64 @@ body:hover .custom-cursor {
     flex-direction: column;
     gap: 0;
     position: relative;
-    max-width: 940px;
+    max-width: 920px;
     margin: 0 auto;
     padding-bottom: 180px;
 }
 
 /* ==========================================
-   SRI MANGALAM STICKY CENTER-STACKING EFFECT
+   STICKY CENTER-STACKING EFFECT (STRICT UNIFORM BREADTH & HEIGHT)
    ========================================== */
 .dat-card {
     position: sticky;
-    top: calc(50vh - 180px);
+    top: calc(50vh - 190px);
     z-index: calc(10 + var(--card-index, 1));
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--glass-border);
+    background-color: var(--bg-secondary) !important;
+    border: 1.5px solid var(--accent-gold);
     border-radius: 24px;
     overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    align-items: center;
-    box-shadow: 0 20px 50px rgba(15, 20, 18, 0.12);
-    margin-bottom: 70vh;
-    backdrop-filter: blur(12px);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease, opacity 0.4s ease;
+    display: grid !important;
+    grid-template-columns: 360px 1fr !important;
+    align-items: stretch !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
+    box-shadow: 0 20px 50px rgba(15, 20, 18, 0.16);
+    margin-bottom: 65vh;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
     cursor: pointer;
 }
 
 .dat-card:hover {
-    border-color: var(--accent-gold-light);
-    box-shadow: 0 30px 75px rgba(184, 150, 92, 0.22);
-}
-
-.dat-card.stacked-behind {
-    transform: scale(0.95);
-    opacity: 0.8;
+    border-color: var(--accent-gold-dark);
+    box-shadow: 0 25px 60px rgba(184, 150, 92, 0.25);
 }
 
 .dat-img-wrap {
-    position: relative;
-    height: 330px;
-    overflow: hidden;
+    position: relative !important;
+    width: 360px !important;
+    min-width: 360px !important;
+    max-width: 360px !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
+    overflow: hidden !important;
+    background-color: var(--bg-primary) !important;
+    flex-shrink: 0 !important;
 }
 
 .dat-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
     transition: transform 0.6s ease;
 }
 
@@ -3548,20 +3560,25 @@ body:hover .custom-cursor {
 .dat-img-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(30,36,32,0.45) 100%);
+    background: linear-gradient(180deg, transparent 50%, rgba(30,36,32,0.4) 100%);
+    pointer-events: none;
 }
 
 .dat-body {
     padding: 32px 36px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .dat-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 8px;
 }
 
 .dat-num {
@@ -3586,54 +3603,34 @@ body:hover .custom-cursor {
 .dat-title {
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 1.85rem;
-    font-weight: 500;
-    color: var(--text-primary) !important;
+    font-weight: 600;
+    color: var(--accent-gold-dark) !important;
     line-height: 1.25;
+    margin-bottom: 10px;
 }
 
 .dat-desc {
-    color: var(--text-muted);
-    font-size: 0.98rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
     line-height: 1.65;
+    opacity: 0.92;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .dat-action {
-    margin-top: 8px;
-}
-
-@media (max-width: 768px) {
-    .dat-card {
-        grid-template-columns: 1fr;
-        top: calc(50vh - 210px);
-        margin-bottom: 55vh;
-    }
-    .dat-img-wrap {
-        height: 200px;
-    }
-    .dat-body {
-        padding: 22px 24px;
-    }
-}
-
-.dat-title {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--text-primary) !important;
-    line-height: 1.3;
-}
-
-.dat-desc {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    flex: 1;
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
 .dat-book-btn {
     align-self: flex-start;
-    margin-top: 6px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -3641,7 +3638,7 @@ body:hover .custom-cursor {
     background: none;
     border: 1px solid var(--accent-gold-light);
     border-radius: 20px;
-    padding: 6px 16px;
+    padding: 8px 18px;
     cursor: pointer;
     text-decoration: none;
     transition: var(--transition-fast);
@@ -3653,14 +3650,34 @@ body:hover .custom-cursor {
     border-color: var(--accent-gold-dark);
 }
 
-@media (max-width: 1200px) {
-    .dat-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 900px) {
-    .dat-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-    .dat-grid { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+    .dat-card {
+        grid-template-columns: 1fr !important;
+        height: 520px !important;
+        min-height: 520px !important;
+        max-height: 520px !important;
+        top: calc(50vh - 260px);
+        margin-bottom: 50vh;
+    }
+    .dat-img-wrap {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 210px !important;
+        min-height: 210px !important;
+        max-height: 210px !important;
+    }
+    .dat-body {
+        padding: 22px 24px;
+        height: 310px;
+    }
+    .dat-title {
+        font-size: 1.5rem;
+    }
+    .dat-desc {
+        -webkit-line-clamp: 3;
+        font-size: 0.88rem;
+    }
 }
 
 
@@ -5326,6 +5343,255 @@ body:hover .custom-cursor {
     color: #1e2420;
     border-color: var(--accent-gold, #d9bf77);
     font-weight: 600;
+}
+
+/* ========================================================
+   CINEMATIC HORIZON SCROLL & DEEP DARK EMERALD REDESIGN
+   ======================================================== */
+
+.cinematic-emerald-hero {
+    position: relative;
+    background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.18) 0%, rgba(10, 17, 14, 0.95) 70%), linear-gradient(180deg, #070c0a 0%, #0e1914 100%);
+    color: #f8f6f0;
+    padding-top: 170px;
+    padding-bottom: 70px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Floating Gold Dust Particles Container */
+.gold-dust-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.gold-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #d4af37;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #d4af37, 0 0 20px #e5c158;
+    opacity: 0.6;
+    animation: floatParticle 10s infinite linear;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg) scale(0.6); opacity: 0; }
+    30% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(-100px) rotate(360deg) scale(1.2); opacity: 0; }
+}
+
+/* Cinematic Full-Width Horizon Carousel Container */
+.cinematic-horizon-section {
+    position: relative;
+    padding: 30px 0 60px 0;
+    background: #0e1914;
+    overflow: hidden;
+}
+
+.horizon-header {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.horizon-track-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 24px;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 transparent;
+}
+
+.horizon-track-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.horizon-track-wrapper::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+}
+
+.horizon-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+}
+
+.horizon-card {
+    width: 460px;
+    height: 380px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    background: #14241d;
+    border: 1.5px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.horizon-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #d4af37;
+    box-shadow: 0 30px 70px rgba(212, 175, 55, 0.3);
+}
+
+.horizon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.horizon-card:hover .horizon-img {
+    transform: scale(1.08);
+}
+
+.horizon-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7,12,10,0.1) 0%, rgba(7,12,10,0.92) 85%);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #f8f6f0;
+}
+
+.horizon-badge {
+    align-self: flex-start;
+    background: rgba(212, 175, 55, 0.2);
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.horizon-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: #f8f6f0;
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.horizon-desc {
+    font-size: 0.9rem;
+    color: rgba(248,246,240,0.85);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+/* Glassmorphism Category Filters */
+.emerald-filter-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0 40px 0;
+}
+
+.emerald-cat-btn {
+    padding: 11px 26px;
+    border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    background: rgba(20, 36, 29, 0.8);
+    color: #f8f6f0;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    backdrop-filter: blur(12px);
+}
+
+.emerald-cat-btn.active,
+.emerald-cat-btn:hover {
+    background: #d4af37;
+    color: #070c0a;
+    border-color: #d4af37;
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+}
+
+.emerald-count-tag {
+    background: rgba(255, 255, 255, 0.18);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Dark Emerald Card Backing & Clean Stacking */
+.dat-card.emerald-card {
+    background-color: #0f1a15 !important;
+    border: 1.5px solid rgba(212, 175, 55, 0.25) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dat-card.emerald-card:hover {
+    border-color: #d4af37 !important;
+}
+
+.dat-card.emerald-card .dat-body {
+    background-color: #0f1a15 !important;
+    color: #f8f6f0 !important;
+}
+
+.dat-card.emerald-card .dat-title {
+    color: #f8f6f0 !important;
+}
+
+.dat-card.emerald-card .dat-desc {
+    color: rgba(248, 246, 240, 0.82) !important;
+}
+
+@media (max-width: 768px) {
+    .horizon-card {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+.dat-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.dat-tag-pill {
+    font-size: 0.76rem;
+    padding: 5px 12px;
+    border-radius: 14px;
+    background: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 

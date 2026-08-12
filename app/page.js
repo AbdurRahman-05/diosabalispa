@@ -11,27 +11,27 @@ const whyYouNeedItems = [
   { 
     link: '/therapy', 
     text: 'Authentic Balinese Touch', 
-    image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-8.jpg' 
+    image: '/assets/balinese_touch_ai.png' 
   },
   { 
     link: '/therapy', 
     text: '100% Organic Botanicals', 
-    image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-2.jpg' 
+    image: '/assets/organic_botanicals_ai.png' 
   },
   { 
     link: '/about', 
     text: 'Private Serene Sanctuary', 
-    image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-1.jpg' 
+    image: '/assets/serene_sanctuary_ai.png' 
   },
   { 
     link: '/therapy', 
     text: 'Bespoke Flower Bath Rituals', 
-    image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-14.jpg' 
+    image: '/assets/flower_bath_ai.png' 
   },
   { 
     link: '/booking', 
     text: 'Certified Master Therapists', 
-    image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-15.jpg' 
+    image: '/assets/master_therapists_ai.png' 
   }
 ];
 
