@@ -6426,6 +6426,110 @@ body:hover .custom-cursor {
     box-shadow: 0 15px 40px rgba(184, 134, 11, 0.35) !important;
 }
 
+/* ==========================================================================
+   GLOBAL COMPREHENSIVE RESPONSIVENESS & BREAKPOINTS (320px - 1400px+)
+   ========================================================================== */
+
+/* Tablet & Smaller Desktop Screens (Max Width: 992px) */
+@media (max-width: 992px) {
+    .container {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+    
+    .sensory-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+    
+    .sensory-grid > div {
+        grid-column: span 1 !important;
+    }
+    
+    .sensory-grid > div:nth-child(5) {
+        grid-column: span 2 !important;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px !important;
+    }
+
+    .dat-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    }
+}
+
+/* Mobile Devices (Max Width: 768px) */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0 !important;
+    }
+    
+    .hero-right-image-wrapper {
+        width: 92% !important;
+        max-width: 460px !important;
+    }
+
+    .hero-right-image {
+        max-height: 50vh !important;
+    }
+
+    .section-title,
+    h1, h2 {
+        font-size: clamp(2rem, 7vw, 3.2rem) !important;
+    }
+
+    .modal-overlay > div {
+        padding: 24px !important;
+        width: 95% !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+}
+
+/* Small Mobile Phones (Max Width: 576px) */
+@media (max-width: 576px) {
+    .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .sensory-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+        gap: 16px !important;
+    }
+
+    .sensory-grid > div {
+        grid-column: span 1 !important;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+        gap: 30px !important;
+    }
+
+    .dat-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .dat-card-tags {
+        gap: 6px !important;
+    }
+
+    .dat-action {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .dat-action button,
+    .dat-action a {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+}
+
 
 
 
