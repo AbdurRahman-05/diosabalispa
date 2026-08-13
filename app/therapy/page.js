@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
 const BASE = 'https://diosabalispa.in/wp-content/uploads/2025/07/';
@@ -119,7 +119,22 @@ export default function TherapyPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGoal, setSelectedGoal] = useState('all');
   const [selectedTreatment, setSelectedTreatment] = useState(null);
+  const [theme, setTheme] = useState('dark');
 
+  useEffect(() => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    setTheme(currentTheme);
+
+    const observer = new MutationObserver(() => {
+      const updatedTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      setTheme(updatedTheme);
+    });
+
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
+
+  const isLight = theme === 'light';
   const horizonTrackRef = useRef(null);
 
   const getCategoryCount = (catId) => {
@@ -143,8 +158,8 @@ export default function TherapyPage() {
   };
 
   return (
-    <main style={{ background: '#070c0a', color: '#f8f6f0', minHeight: '100vh' }}>
-      {/* CINEMATIC DEEP DARK EMERALD HERO */}
+    <main style={{ background: isLight ? '#f8f3eb' : '#0a0b0a', color: isLight ? '#3a281c' : '#f3eee3', minHeight: '100vh' }}>
+      {/* CINEMATIC DEEP DARK / LIGHT GOLDEN HERO */}
       <section className="cinematic-emerald-hero">
         {/* Floating Gold Dust Particles */}
         <div className="gold-dust-container">
@@ -161,20 +176,55 @@ export default function TherapyPage() {
           ))}
         </div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <span style={{ background: 'rgba(212,175,55,0.15)', color: '#d4af37', padding: '6px 20px', borderRadius: '25px', border: '1px solid rgba(212,175,55,0.4)', fontSize: '0.8rem', letterSpacing: '0.2em', fontWeight: 700, textTransform: 'uppercase' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
+          {/* AMBIENT GLOW BACKDROP */}
+          <div 
+            style={{
+              position: 'absolute',
+              top: '35%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '550px',
+              height: '190px',
+              background: isLight 
+                ? 'radial-gradient(ellipse at center, rgba(212, 160, 23, 0.35) 0%, rgba(184, 134, 11, 0.18) 50%, transparent 75%)' 
+                : 'radial-gradient(ellipse at center, rgba(217, 119, 6, 0.35) 0%, rgba(212, 175, 55, 0.18) 50%, transparent 75%)',
+              filter: 'blur(50px)',
+              zIndex: 0,
+              pointerEvents: 'none',
+              animation: 'headingGlowPulse 6s ease-in-out infinite alternate'
+            }}
+          />
+
+          <span style={{ position: 'relative', zIndex: 1, background: isLight ? 'rgba(184,115,51,0.15)' : 'rgba(217,119,6,0.15)', color: '#d97706', padding: '6px 20px', borderRadius: '25px', border: isLight ? '1px solid rgba(184,134,11,0.4)' : '1px solid rgba(217,119,6,0.4)', fontSize: '0.8rem', letterSpacing: '0.2em', fontWeight: 700, textTransform: 'uppercase', display: 'inline-block', marginBottom: '14px' }}>
             DIOSA BALI SPA SANCTUARY
           </span>
-          <h1 style={{ fontSize: '3.8rem', marginTop: '18px', marginBottom: '14px', fontFamily: "'Cormorant Garamond', serif", color: '#f8f6f0', letterSpacing: '0.02em' }}>
+
+          <h1 style={{ position: 'relative', zIndex: 1, fontSize: '3.8rem', marginBottom: '14px', fontFamily: "'Cormorant Garamond', serif", color: isLight ? '#5c3a21' : '#d4af37', letterSpacing: '0.02em', textShadow: isLight ? '0 0 25px rgba(184, 134, 11, 0.35)' : '0 0 25px rgba(212, 175, 55, 0.4)' }}>
             Therapies &amp; Healing Rituals
           </h1>
-          <p style={{ maxWidth: '700px', margin: '0 auto', color: 'rgba(248,246,240,0.85)', fontSize: '1.1rem', lineHeight: 1.7 }}>
-            Step into our dark emerald sanctuary — a high-art collection of 44 ancient Indo-Balinese bodywork rituals, hot stone therapies, and sensory hydro-baths.
+
+          <p style={{ position: 'relative', zIndex: 1, maxWidth: '700px', margin: '0 auto', color: isLight ? '#523e30' : '#a8a090', fontSize: '1.1rem', lineHeight: 1.7 }}>
+            Step into our cave sanctuary — an authentic collection of 44 ancient Indo-Balinese bodywork rituals, hot stone therapies, and sensory hydro-baths.
           </p>
 
-          {/* "FIND YOUR IDEAL RITUAL" GOAL SELECTOR WITH ELEGANT SVG ICONS */}
-          <div style={{ marginTop: '40px', background: 'rgba(20,36,29,0.7)', border: '1px solid rgba(212,175,55,0.3)', borderRadius: '24px', padding: '24px 30px', maxWidth: '880px', marginLeft: 'auto', marginRight: 'auto', backdropFilter: 'blur(16px)' }}>
-            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.25rem', color: '#d4af37', marginBottom: '16px', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {/* "FIND YOUR IDEAL RITUAL" GOAL SELECTOR BOX (LUXURY LIGHT & DARK THEME ADAPTATION) */}
+          <div 
+            style={{ 
+              marginTop: '40px', 
+              background: isLight ? 'linear-gradient(135deg, #fffcf8 0%, #f5ebd9 100%)' : 'rgba(20,36,29,0.7)', 
+              border: isLight ? '1.5px solid #d4af37' : '1px solid rgba(212,175,55,0.3)', 
+              borderRadius: '24px', 
+              padding: '24px 30px', 
+              maxWidth: '880px', 
+              marginLeft: 'auto', 
+              marginRight: 'auto', 
+              backdropFilter: 'blur(16px)', 
+              boxShadow: isLight ? '0 16px 45px rgba(184, 115, 51, 0.22), inset 0 0 25px rgba(212, 175, 55, 0.1)' : '0 15px 40px rgba(0,0,0,0.6)', 
+              transition: 'all 0.35s ease' 
+            }}
+          >
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.25rem', color: isLight ? '#5c3a21' : '#d4af37', marginBottom: '16px', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <SparkleIcon /> WHAT IS YOUR HEALING GOAL TODAY?
             </div>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -191,16 +241,21 @@ export default function TherapyPage() {
                   style={{
                     padding: '11px 22px',
                     borderRadius: '25px',
-                    border: '1px solid',
-                    borderColor: selectedGoal === g.id ? '#d4af37' : 'rgba(212,175,55,0.25)',
-                    background: selectedGoal === g.id ? '#d4af37' : 'rgba(10,17,14,0.6)',
-                    color: selectedGoal === g.id ? '#070c0a' : '#f8f6f0',
-                    fontWeight: selectedGoal === g.id ? '700' : '500',
+                    border: '1.5px solid',
+                    borderColor: selectedGoal === g.id ? '#b8860b' : (isLight ? 'rgba(184,134,11,0.35)' : 'rgba(212,175,55,0.25)'),
+                    background: selectedGoal === g.id 
+                      ? (isLight ? 'linear-gradient(135deg, #b8860b 0%, #d4af37 100%)' : '#b8860b') 
+                      : (isLight ? '#ffffff' : 'rgba(10,17,14,0.6)'),
+                    color: selectedGoal === g.id ? '#ffffff' : (isLight ? '#4a3525' : '#f8f6f0'),
+                    fontWeight: selectedGoal === g.id ? '700' : '600',
                     cursor: 'pointer',
                     fontSize: '0.88rem',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    boxShadow: selectedGoal === g.id 
+                      ? '0 8px 25px rgba(184,115,51,0.4)' 
+                      : (isLight ? '0 4px 12px rgba(184,115,51,0.08)' : 'none')
                   }}
                 >
                   {g.icon}
@@ -213,20 +268,20 @@ export default function TherapyPage() {
       </section>
 
       {/* CINEMATIC FULL-WIDTH HORIZON SCROLL SHOWCASE */}
-      <section className="cinematic-horizon-section">
+      <section className="cinematic-horizon-section" style={{ background: isLight ? '#f8f3eb' : '#0e1914' }}>
         <div className="horizon-header">
           <div>
-            <span style={{ color: '#d4af37', fontSize: '0.8rem', letterSpacing: '0.18em', fontWeight: 700, textTransform: 'uppercase' }}>
+            <span style={{ color: '#d97706', fontSize: '0.8rem', letterSpacing: '0.18em', fontWeight: 700, textTransform: 'uppercase' }}>
               CURATED SHOWCASE
             </span>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.5rem', color: '#f8f6f0', margin: '4px 0 0 0' }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.5rem', color: isLight ? '#5c3a21' : '#f8f6f0', margin: '4px 0 0 0' }}>
               Signature Experiences
             </h2>
           </div>
           
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button onClick={() => scrollHorizon('left')} style={{ width: '46px', height: '46px', borderRadius: '50%', border: '1px solid #d4af37', background: 'rgba(212,175,55,0.1)', color: '#d4af37', cursor: 'pointer', fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&larr;</button>
-            <button onClick={() => scrollHorizon('right')} style={{ width: '46px', height: '46px', borderRadius: '50%', border: '1px solid #d4af37', background: 'rgba(212,175,55,0.1)', color: '#d4af37', cursor: 'pointer', fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&rarr;</button>
+            <button onClick={() => scrollHorizon('left')} style={{ width: '46px', height: '46px', borderRadius: '50%', border: isLight ? '1.5px solid #b8860b' : '1px solid #d4af37', background: isLight ? '#f2e9dc' : 'rgba(212,175,55,0.1)', color: isLight ? '#5c3a21' : '#d4af37', cursor: 'pointer', fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&larr;</button>
+            <button onClick={() => scrollHorizon('right')} style={{ width: '46px', height: '46px', borderRadius: '50%', border: isLight ? '1.5px solid #b8860b' : '1px solid #d4af37', background: isLight ? '#f2e9dc' : 'rgba(212,175,55,0.1)', color: isLight ? '#5c3a21' : '#d4af37', cursor: 'pointer', fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&rarr;</button>
           </div>
         </div>
 
@@ -241,10 +296,10 @@ export default function TherapyPage() {
                     <h3 className="horizon-title">{item.title}</h3>
                     <p className="horizon-desc">{item.desc}</p>
                     <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.78rem', background: 'rgba(212,175,55,0.2)', color: '#d4af37', padding: '5px 14px', borderRadius: '12px', border: '1px solid rgba(212,175,55,0.4)', fontWeight: 600, display: 'inline-flex', alignItems: 'center' }}>
+                      <span style={{ fontSize: '0.78rem', background: isLight ? 'rgba(184,134,11,0.2)' : 'rgba(212,175,55,0.2)', color: isLight ? '#5c3a21' : '#d4af37', padding: '5px 14px', borderRadius: '12px', border: isLight ? '1px solid rgba(184,134,11,0.4)' : '1px solid rgba(212,175,55,0.4)', fontWeight: 600, display: 'inline-flex', alignItems: 'center' }}>
                         <ClockIcon /> {item.duration}
                       </span>
-                      <span style={{ fontSize: '0.78rem', background: 'rgba(212,175,55,0.2)', color: '#d4af37', padding: '5px 14px', borderRadius: '12px', border: '1px solid rgba(212,175,55,0.4)', fontWeight: 600, display: 'inline-flex', alignItems: 'center' }}>
+                      <span style={{ fontSize: '0.78rem', background: isLight ? 'rgba(184,134,11,0.2)' : 'rgba(212,175,55,0.2)', color: isLight ? '#5c3a21' : '#d4af37', padding: '5px 14px', borderRadius: '12px', border: isLight ? '1px solid rgba(184,134,11,0.4)' : '1px solid rgba(212,175,55,0.4)', fontWeight: 600, display: 'inline-flex', alignItems: 'center' }}>
                         <PressureIcon /> {item.pressure}
                       </span>
                     </div>
@@ -257,7 +312,7 @@ export default function TherapyPage() {
       </section>
 
       {/* FILTER & TREATMENTS GRID SECTION */}
-      <section style={{ padding: '40px 0 100px 0', background: '#070c0a' }}>
+      <section style={{ padding: '40px 0 100px 0', background: isLight ? '#f8f3eb' : '#070c0a' }}>
         <div className="container">
           {/* SEARCH & GLASSMORPHISM CATEGORY PILLS */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', marginBottom: '40px' }}>
@@ -271,12 +326,12 @@ export default function TherapyPage() {
                 maxWidth: '560px',
                 padding: '14px 26px',
                 borderRadius: '30px',
-                border: '1.5px solid rgba(212,175,55,0.4)',
-                background: '#0e1914',
+                border: isLight ? '1.5px solid rgba(184,134,11,0.4)' : '1.5px solid rgba(212,175,55,0.4)',
+                background: isLight ? '#f2e9dc' : '#0e1914',
                 outline: 'none',
                 fontSize: '1rem',
-                color: '#f8f6f0',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+                color: isLight ? '#3a281c' : '#f8f6f0',
+                boxShadow: isLight ? '0 10px 30px rgba(184,115,51,0.12)' : '0 10px 30px rgba(0,0,0,0.5)'
               }}
             />
 
@@ -310,21 +365,21 @@ export default function TherapyPage() {
                   <div className="dat-img-wrap">
                     <img src={t.img} alt={t.title} className="dat-img" />
                     <div className="dat-img-overlay"></div>
-                    <span style={{ position: 'absolute', top: '14px', left: '14px', background: 'rgba(7,12,10,0.9)', color: '#d4af37', border: '1px solid rgba(212,175,55,0.4)', padding: '5px 14px', borderRadius: '15px', fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.5px', zIndex: 2 }}>
+                    <span style={{ position: 'absolute', top: '14px', left: '14px', background: isLight ? 'rgba(242,233,220,0.94)' : 'rgba(7,12,10,0.9)', color: isLight ? '#5c3a21' : '#d4af37', border: isLight ? '1px solid rgba(184,134,11,0.4)' : '1px solid rgba(212,175,55,0.4)', padding: '5px 14px', borderRadius: '15px', fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.5px', zIndex: 2 }}>
                       RITUAL {String(idx + 1).padStart(2, '0')}
                     </span>
                   </div>
                   <div className="dat-body">
                     <div>
                       <div className="dat-card-tags">
-                        <span className="dat-tag-pill" style={{ background: 'rgba(212,175,55,0.15)', color: '#d4af37', display: 'inline-flex', alignItems: 'center' }}>
+                        <span className="dat-tag-pill" style={{ background: isLight ? 'rgba(184,134,11,0.15)' : 'rgba(212,175,55,0.15)', color: isLight ? '#b87333' : '#d4af37', display: 'inline-flex', alignItems: 'center' }}>
                           <ClockIcon /> {t.duration}
                         </span>
-                        <span className="dat-tag-pill" style={{ background: 'rgba(212,175,55,0.15)', color: '#d4af37', display: 'inline-flex', alignItems: 'center' }}>
+                        <span className="dat-tag-pill" style={{ background: isLight ? 'rgba(184,134,11,0.15)' : 'rgba(212,175,55,0.15)', color: isLight ? '#b87333' : '#d4af37', display: 'inline-flex', alignItems: 'center' }}>
                           <PressureIcon /> {t.pressure}
                         </span>
                         {isRecommended && (
-                          <span className="dat-tag-pill" style={{ background: '#d4af37', color: '#070c0a', fontWeight: 700, display: 'inline-flex', alignItems: 'center' }}>
+                          <span className="dat-tag-pill" style={{ background: '#b8860b', color: '#ffffff', fontWeight: 700, display: 'inline-flex', alignItems: 'center' }}>
                             <StarIcon /> IDEAL MATCH
                           </span>
                         )}
@@ -335,13 +390,13 @@ export default function TherapyPage() {
                     <div className="dat-action">
                       <button
                         onClick={() => setSelectedTreatment(t)}
-                        style={{ padding: '8px 18px', border: '1.5px solid #d4af37', background: 'transparent', color: '#d4af37', fontWeight: '600', borderRadius: '20px', cursor: 'pointer', fontSize: '0.8rem' }}
+                        style={{ padding: '8px 18px', border: isLight ? '1.5px solid #b8860b' : '1.5px solid #d4af37', background: 'transparent', color: isLight ? '#5c3a21' : '#d4af37', fontWeight: '600', borderRadius: '20px', cursor: 'pointer', fontSize: '0.8rem' }}
                       >
                         Quick View Details
                       </button>
                       <Link
                         href="/booking"
-                        style={{ padding: '8px 22px', background: '#d4af37', color: '#070c0a', borderRadius: '20px', textDecoration: 'none', fontWeight: '700', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center' }}
+                        style={{ padding: '8px 22px', background: isLight ? '#b8860b' : '#d4af37', color: isLight ? '#ffffff' : '#070c0a', borderRadius: '20px', textDecoration: 'none', fontWeight: '700', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center' }}
                       >
                         Reserve
                       </Link>
@@ -354,34 +409,34 @@ export default function TherapyPage() {
         </div>
       </section>
 
-      {/* QUICK VIEW DETAIL MODAL IN DEEP DARK EMERALD STYLING */}
+      {/* QUICK VIEW DETAIL MODAL */}
       {selectedTreatment && (
-        <div className="modal-overlay active" onClick={() => setSelectedTreatment(null)} style={{ display: 'flex', zIndex: 10000, background: 'rgba(0,0,0,0.85)' }}>
+        <div className="modal-overlay active" onClick={() => setSelectedTreatment(null)} style={{ display: 'flex', zIndex: 10000, background: isLight ? 'rgba(248,243,235,0.95)' : 'rgba(0,0,0,0.85)' }}>
           <div 
             onClick={(e) => e.stopPropagation()}
-            style={{ background: '#0e1914', color: '#f8f6f0', padding: '35px', borderRadius: '24px', maxWidth: '640px', width: '90%', position: 'relative', border: '1.5px solid #d4af37', boxShadow: '0 25px 60px rgba(0,0,0,0.8)' }}
+            style={{ background: isLight ? '#f8f3eb' : '#0e1914', color: isLight ? '#3a281c' : '#f8f6f0', padding: '35px', borderRadius: '24px', maxWidth: '640px', width: '90%', position: 'relative', border: isLight ? '1.5px solid #b8860b' : '1.5px solid #d4af37', boxShadow: isLight ? '0 25px 60px rgba(184,115,51,0.25)' : '0 25px 60px rgba(0,0,0,0.8)' }}
           >
-            <button onClick={() => setSelectedTreatment(null)} style={{ position: 'absolute', top: '15px', right: '20px', border: 'none', background: 'none', fontSize: '26px', cursor: 'pointer', color: '#d4af37' }}>&times;</button>
-            <h2 style={{ color: '#d4af37', fontFamily: "'Cormorant Garamond', serif", fontSize: '2.4rem', marginBottom: '15px' }}>{selectedTreatment.title}</h2>
+            <button onClick={() => setSelectedTreatment(null)} style={{ position: 'absolute', top: '15px', right: '20px', border: 'none', background: 'none', fontSize: '26px', cursor: 'pointer', color: isLight ? '#5c3a21' : '#d4af37' }}>&times;</button>
+            <h2 style={{ color: isLight ? '#5c3a21' : '#d4af37', fontFamily: "'Cormorant Garamond', serif", fontSize: '2.4rem', marginBottom: '15px' }}>{selectedTreatment.title}</h2>
             
-            <div style={{ height: '260px', width: '100%', borderRadius: '16px', overflow: 'hidden', marginBottom: '20px', border: '1px solid rgba(212,175,55,0.3)' }}>
+            <div style={{ height: '260px', width: '100%', borderRadius: '16px', overflow: 'hidden', marginBottom: '20px', border: isLight ? '1px solid rgba(184,134,11,0.3)' : '1px solid rgba(212,175,55,0.3)' }}>
               <img src={selectedTreatment.img} alt={selectedTreatment.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
 
             <div style={{ display: 'flex', gap: '12px', marginBottom: '18px' }}>
-              <span style={{ fontSize: '0.8rem', background: 'rgba(212,175,55,0.15)', color: '#d4af37', padding: '5px 14px', borderRadius: '15px', fontWeight: 600, border: '1px solid rgba(212,175,55,0.3)', display: 'inline-flex', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.8rem', background: isLight ? 'rgba(184,134,11,0.15)' : 'rgba(212,175,55,0.15)', color: isLight ? '#b87333' : '#d4af37', padding: '5px 14px', borderRadius: '15px', fontWeight: 600, border: isLight ? '1px solid rgba(184,134,11,0.3)' : '1px solid rgba(212,175,55,0.3)', display: 'inline-flex', alignItems: 'center' }}>
                 <ClockIcon /> Duration: {selectedTreatment.duration}
               </span>
-              <span style={{ fontSize: '0.8rem', background: 'rgba(212,175,55,0.15)', color: '#d4af37', padding: '5px 14px', borderRadius: '15px', fontWeight: 600, border: '1px solid rgba(212,175,55,0.3)', display: 'inline-flex', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.8rem', background: isLight ? 'rgba(184,134,11,0.15)' : 'rgba(212,175,55,0.15)', color: isLight ? '#b87333' : '#d4af37', padding: '5px 14px', borderRadius: '15px', fontWeight: 600, border: isLight ? '1px solid rgba(184,134,11,0.3)' : '1px solid rgba(212,175,55,0.3)', display: 'inline-flex', alignItems: 'center' }}>
                 <PressureIcon /> Pressure: {selectedTreatment.pressure}
               </span>
             </div>
 
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'rgba(248,246,240,0.88)', marginBottom: '25px' }}>{selectedTreatment.desc}</p>
+            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: isLight ? '#523e30' : 'rgba(248,246,240,0.88)', marginBottom: '25px' }}>{selectedTreatment.desc}</p>
             
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: '600', color: '#d4af37', fontSize: '0.9rem' }}>Includes Custom Aromatherapy Oil Consultation</span>
-              <Link href="/booking" style={{ padding: '12px 28px', background: '#d4af37', color: '#070c0a', borderRadius: '30px', fontWeight: '700', textDecoration: 'none' }}>
+              <span style={{ fontWeight: '600', color: isLight ? '#5c3a21' : '#d4af37', fontSize: '0.9rem' }}>Includes Custom Aromatherapy Oil Consultation</span>
+              <Link href="/booking" style={{ padding: '12px 28px', background: isLight ? '#b8860b' : '#d4af37', color: isLight ? '#ffffff' : '#070c0a', borderRadius: '30px', fontWeight: '700', textDecoration: 'none' }}>
                 Book This Treatment
               </Link>
             </div>

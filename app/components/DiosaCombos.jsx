@@ -160,13 +160,33 @@ export default function DiosaCombos() {
       className="diosa-combo-section section-padding" 
       id="combo-packages"
       style={{
-        background: 'radial-gradient(circle at 15% 20%, rgba(217, 191, 119, 0.15) 0%, transparent 40%), radial-gradient(circle at 85% 80%, rgba(78, 101, 80, 0.25) 0%, transparent 50%), linear-gradient(180deg, #161d18 0%, #1e2420 50%, #121714 100%)',
-        color: '#fbf9f6'
+        background: 'transparent',
+        color: '#f3eee3',
       }}
     >
       <div className="diosa-combo-container">
-        <div className="diosa-combo-header text-center">
-          <h2 className="diosa-combo-main-title">Diosa Combo Packages</h2>
+        <div className="diosa-combo-header text-center" style={{ marginBottom: '60px', position: 'relative' }}>
+          <div 
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '450px',
+              height: '180px',
+              background: 'radial-gradient(ellipse at center, rgba(217, 119, 6, 0.35) 0%, rgba(212, 175, 55, 0.18) 50%, transparent 75%)',
+              filter: 'blur(45px)',
+              zIndex: 0,
+              pointerEvents: 'none',
+              animation: 'headingGlowPulse 6s ease-in-out infinite alternate'
+            }}
+          />
+          <span style={{ position: 'relative', zIndex: 1, fontSize: '0.78rem', letterSpacing: '0.25em', color: '#d97706', fontWeight: 700, textTransform: 'uppercase', display: 'inline-block', marginBottom: '10px' }}>
+            CURATED SPA JOURNEYS
+          </span>
+          <h2 className="diosa-combo-main-title" style={{ position: 'relative', zIndex: 1, fontFamily: "'Cormorant Garamond', serif", fontSize: '3.4rem', color: '#d4af37', margin: 0, textShadow: '0 0 25px rgba(212, 175, 55, 0.4), 0 0 50px rgba(217, 119, 6, 0.25)' }}>
+            Diosa Combo Packages
+          </h2>
         </div>
 
         <div className="diosa-combo-track-wrapper" id="comboTrackWrapper" ref={wrapperRef}>

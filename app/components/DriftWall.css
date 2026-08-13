@@ -124,3 +124,22 @@
     will-change: auto;
   }
 }
+
+/* LIGHT THEME OVERRIDES FOR 3D DRIFT WALL SHOWCASE */
+[data-theme="light"] .drift-wall {
+  --dw-overlay: #f8f3eb !important;
+}
+
+[data-theme="light"] .drift-wall__inner {
+  background: #f2e9dc !important;
+  box-shadow: 0 10px 30px rgba(184, 115, 51, 0.15) !important;
+}
+
+[data-theme="light"] .drift-wall__overlay {
+  background: rgba(248, 243, 235, 0.2) !important;
+  opacity: 0.15 !important;
+}
+
+[data-theme="light"] .drift-wall__tile.is-active .drift-wall__inner {
+  box-shadow: 0 24px 60px -18px rgba(184, 115, 51, 0.35) !important;
+}

@@ -4,16 +4,16 @@ import { useState, useRef, useEffect } from 'react';
 
 const tracks = [
   { 
-    name: 'Zen Meditation Sanctuary', 
+    name: 'Zen Mind Relaxation Sanctuary', 
     src: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=zen-meditation-113824.mp3' 
-  },
-  { 
-    name: 'Forest Rain & Chimes', 
-    src: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=relaxing-mountains-rivers-141319.mp3' 
   },
   { 
     name: 'Balinese Serenity Waves', 
     src: 'https://cdn.pixabay.com/download/audio/2021/09/06/audio_8b05615d6a.mp3?filename=meditation-relaxing-music-9430.mp3' 
+  },
+  { 
+    name: 'Forest Rain & Chimes', 
+    src: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=relaxing-mountains-rivers-141319.mp3' 
   }
 ];
 
@@ -21,78 +21,68 @@ export default function ZenSoundscape() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [volume, setVolume] = useState(0.6);
-  const [prevVolume, setPrevVolume] = useState(0.6);
+  const [volume, setVolume] = useState(0.5);
+  const [prevVolume, setPrevVolume] = useState(0.5);
   const [isMuted, setIsMuted] = useState(false);
   const [isLooping, setIsLooping] = useState(true);
   const audioRef = useRef(null);
-  const synthRef = useRef(null);
+  const hasInteractedRef = useRef(false);
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
       audioRef.current.loop = isLooping;
     }
-    if (synthRef.current?.masterGain && synthRef.current?.ctx) {
-      synthRef.current.masterGain.gain.setValueAtTime(volume * 0.25, synthRef.current.ctx.currentTime);
-    }
   }, [volume, isLooping]);
 
+  // AUTO-PLAY MIND RELAXATION BGM ON SITE ENTER / USER INTERACTION
   useEffect(() => {
-    if (isPlaying) {
-      setIsOpen(true);
-    }
-  }, [isPlaying]);
-
-  // Web Audio Synth Fallback for 100% guaranteed ambient music playback
-  const startSynthFallback = () => {
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      if (!synthRef.current) {
-        const ctx = new AudioCtx();
-        const masterGain = ctx.createGain();
-        masterGain.gain.setValueAtTime(volume * 0.25, ctx.currentTime);
-        masterGain.connect(ctx.destination);
-
-        // Zen chord drone (432Hz tuning: F3, C4, E4, A4)
-        const freqs = [174.61, 261.63, 329.63, 432.00];
-        const oscs = freqs.map(f => {
-          const osc = ctx.createOscillator();
-          const g = ctx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(f, ctx.currentTime);
-          g.gain.setValueAtTime(0.08, ctx.currentTime);
-          osc.connect(g);
-          g.connect(masterGain);
-          osc.start();
-          return osc;
-        });
-
-        synthRef.current = { ctx, masterGain, oscs };
-      } else {
-        if (synthRef.current.ctx.state === 'suspended') {
-          synthRef.current.ctx.resume();
-        }
+    const handleUserInteraction = () => {
+      if (audioRef.current && !hasInteractedRef.current) {
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+            hasInteractedRef.current = true;
+            removeListeners();
+          })
+          .catch(() => {});
       }
-    } catch (err) {
-      console.warn('Synth fallback notice:', err);
-    }
-  };
+    };
 
-  const stopSynthFallback = () => {
-    if (synthRef.current) {
-      try {
-        synthRef.current.ctx.suspend();
-      } catch (e) {}
-    }
-  };
+    const removeListeners = () => {
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
+      window.removeEventListener('scroll', handleUserInteraction);
+      window.removeEventListener('keydown', handleUserInteraction);
+    };
 
-  const togglePlay = () => {
+    window.addEventListener('click', handleUserInteraction, { passive: true });
+    window.addEventListener('touchstart', handleUserInteraction, { passive: true });
+    window.addEventListener('scroll', handleUserInteraction, { passive: true });
+    window.addEventListener('keydown', handleUserInteraction, { passive: true });
+
+    // Initial direct attempt if browser allows unmuted autoplay
+    if (audioRef.current) {
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+          hasInteractedRef.current = true;
+          removeListeners();
+        })
+        .catch(() => {});
+    }
+
+    return () => {
+      removeListeners();
+    };
+  }, []);
+
+  const togglePlay = (e) => {
+    e?.stopPropagation();
     if (!audioRef.current) return;
+    hasInteractedRef.current = true;
     if (isPlaying) {
       audioRef.current.pause();
-      stopSynthFallback();
       setIsPlaying(false);
     } else {
       audioRef.current.play()
@@ -100,23 +90,18 @@ export default function ZenSoundscape() {
           setIsPlaying(true);
         })
         .catch(() => {
-          startSynthFallback();
-          setIsPlaying(true);
+          setIsPlaying(false);
         });
     }
   };
 
   const selectTrack = (index) => {
     setCurrentTrackIndex(index);
-    stopSynthFallback();
     if (audioRef.current) {
       audioRef.current.src = tracks[index].src;
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch(() => {
-          startSynthFallback();
-          setIsPlaying(true);
-        });
+        .catch(() => setIsPlaying(false));
     }
   };
 
@@ -133,23 +118,11 @@ export default function ZenSoundscape() {
   const toggleMute = () => {
     if (isMuted) {
       setIsMuted(false);
-      setVolume(prevVolume || 0.6);
+      setVolume(prevVolume || 0.5);
     } else {
       setPrevVolume(volume);
       setIsMuted(true);
       setVolume(0);
-    }
-  };
-
-  const toggleLoop = () => {
-    setIsLooping(prev => !prev);
-  };
-
-  const handleTriggerClick = (e) => {
-    e?.stopPropagation();
-    setIsOpen(true);
-    if (!isPlaying) {
-      togglePlay();
     }
   };
 
@@ -162,31 +135,82 @@ export default function ZenSoundscape() {
         preload="auto"
       />
 
-      {/* Floating Trigger Button */}
-      <button 
-        className="soundscape-trigger" 
-        onClick={handleTriggerClick}
-        aria-label="Toggle Sanctuary Audio"
-        title="Sanctuary Zen Audio Options"
+      {/* Floating BGM Control Bar */}
+      <div 
+        className="soundscape-control-bar"
         style={{
-          background: isPlaying ? 'var(--accent-gold)' : '#1e2420',
-          color: isPlaying ? '#1e2420' : 'var(--accent-gold)',
-          border: '1.5px solid var(--accent-gold)',
-          boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)',
-          transition: 'all 0.3s ease'
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          background: 'rgba(18, 19, 18, 0.94)',
+          border: '1.5px solid rgba(212, 175, 55, 0.5)',
+          borderRadius: '40px',
+          padding: '6px 18px 6px 8px',
+          boxShadow: '0 12px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(217, 119, 6, 0.25)',
+          backdropFilter: 'blur(12px)'
         }}
       >
-        <span className={`waveform ${isPlaying ? 'playing' : ''}`} id="waveform">
-          <span className="bar-wf" style={{ background: isPlaying ? '#1e2420' : 'var(--accent-gold)' }}></span>
-          <span className="bar-wf" style={{ background: isPlaying ? '#1e2420' : 'var(--accent-gold)' }}></span>
-          <span className="bar-wf" style={{ background: isPlaying ? '#1e2420' : 'var(--accent-gold)' }}></span>
-          <span className="bar-wf" style={{ background: isPlaying ? '#1e2420' : 'var(--accent-gold)' }}></span>
-        </span>
-        <svg className="audio-volume-icon" viewBox="0 0 24 24" width="18" height="18">
-          <path d="M11 5L6 9H2v6h4l5 4V5z" fill="none" stroke="currentColor" strokeWidth="2" />
-          <path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      </button>
+        {/* ONE-TOUCH PLAY / PAUSE BUTTON */}
+        <button 
+          onClick={togglePlay}
+          aria-label={isPlaying ? "Pause Mind Relaxation BGM" : "Play Mind Relaxation BGM"}
+          title={isPlaying ? "Pause Mind Relaxation BGM" : "Play Mind Relaxation BGM"}
+          style={{
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            background: isPlaying ? 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)' : '#221811',
+            color: isPlaying ? '#0a0b0a' : '#d4af37',
+            border: '1px solid #d4af37',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            boxShadow: '0 4px 15px rgba(217, 119, 6, 0.35)',
+            flexShrink: 0,
+            transition: 'all 0.3s ease'
+          }}
+        >
+          {isPlaying ? (
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ marginLeft: '2px' }}>
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
+
+        {/* EQUALIZER & TITLE (CLICK TO TOGGLE OPTIONS OR PLAY/PAUSE) */}
+        <div 
+          onClick={() => setIsOpen(!isOpen)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            cursor: 'pointer',
+            userSelect: 'none'
+          }}
+        >
+          {/* Waveform Equalizer */}
+          <span className={`waveform ${isPlaying ? 'playing' : ''}`}>
+            <span className="bar-wf" style={{ background: isPlaying ? '#d97706' : '#a8a090' }}></span>
+            <span className="bar-wf" style={{ background: isPlaying ? '#d97706' : '#a8a090' }}></span>
+            <span className="bar-wf" style={{ background: isPlaying ? '#d97706' : '#a8a090' }}></span>
+            <span className="bar-wf" style={{ background: isPlaying ? '#d97706' : '#a8a090' }}></span>
+          </span>
+
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: '0.72rem', letterSpacing: '0.15em', color: '#d97706', fontWeight: 700, textTransform: 'uppercase' }}>
+              MIND RELAXATION BGM
+            </span>
+            <span style={{ fontSize: '0.82rem', color: '#f3eee3', fontWeight: 500 }}>
+              {isPlaying ? 'Playing • Click for options' : 'Paused • Click to play'}
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Expanded Controls Window */}
       <div 
@@ -210,7 +234,7 @@ export default function ZenSoundscape() {
         }}
       >
         <div className="panel-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(217, 191, 119, 0.3)', paddingBottom: '12px', marginBottom: '16px' }}>
-          <h4 style={{ margin: 0, fontFamily: 'var(--font-heading)', fontSize: '1.4rem', color: 'var(--accent-gold)' }}>Sanctuary Music Options</h4>
+          <h4 style={{ margin: 0, fontFamily: 'var(--font-heading)', fontSize: '1.4rem', color: 'var(--accent-gold)' }}>Sanctuary BGM Options</h4>
           <button className="panel-close-btn" onClick={() => setIsOpen(false)} aria-label="Close Audio Panel" style={{ background: 'none', border: 'none', color: 'var(--accent-gold)', fontSize: '1.6rem', cursor: 'pointer' }}>&times;</button>
         </div>
 
@@ -245,7 +269,7 @@ export default function ZenSoundscape() {
                 className="play-pause-btn" 
                 onClick={togglePlay} 
                 aria-label="Play/Pause" 
-                title={isPlaying ? "Pause Music" : "Play Music"}
+                title={isPlaying ? "Pause BGM" : "Play BGM"}
                 style={{
                   width: '52px',
                   height: '52px',
@@ -281,20 +305,6 @@ export default function ZenSoundscape() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <polygon points="5 4 15 12 5 20 5 4"></polygon>
                   <line x1="19" y1="5" x2="19" y2="19"></line>
-                </svg>
-              </button>
-
-              {/* REPEAT LOOP TOGGLE */}
-              <button 
-                onClick={toggleLoop} 
-                title={isLooping ? "Repeat On" : "Repeat Off"} 
-                style={{ background: 'none', border: 'none', color: isLooping ? 'var(--accent-gold)' : '#888', cursor: 'pointer', display: 'flex', alignItems: 'center', opacity: isLooping ? 1 : 0.5 }}
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                  <polyline points="17 1 21 5 17 9"></polyline>
-                  <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
-                  <polyline points="7 23 3 19 7 15"></polyline>
-                  <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
                 </svg>
               </button>
             </div>

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
+import ThemeToggle from './ThemeToggle';
 
 import './BubbleMenu.css';
 
@@ -211,17 +212,21 @@ export default function BubbleMenu({
           </span>
         </div>
 
-        <button
-          type="button"
-          className={`bubble toggle-bubble menu-btn ${isMenuOpen ? 'open' : ''}`}
-          onClick={handleToggle}
-          aria-label={menuAriaLabel}
-          aria-pressed={isMenuOpen}
-          style={{ background: menuBg }}
-        >
-          <span className="menu-line" style={{ background: menuContentColor }} />
-          <span className="menu-line short" style={{ background: menuContentColor }} />
-        </button>
+        {/* RIGHT ACTION BUBBLES (THEME TOGGLE + MENU BUTTON ON EXACT SAME LINE) */}
+        <div className="nav-right-actions" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <ThemeToggle />
+
+          <button
+            type="button"
+            className={`bubble toggle-bubble menu-btn ${isMenuOpen ? 'open' : ''}`}
+            onClick={handleToggle}
+            aria-label={menuAriaLabel}
+            aria-pressed={isMenuOpen}
+          >
+            <span className="menu-line" />
+            <span className="menu-line short" />
+          </button>
+        </div>
       </nav>
       {showOverlay && (
         <div

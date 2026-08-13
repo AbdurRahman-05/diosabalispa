@@ -37,7 +37,7 @@ export default function Footer() {
               />
             </h3>
             <p className="footer-desc">
-              A premium sanctuary designed to align the modern nervous system and return you to natural rhythm.
+              A peaceful sanctuary of natural stone, warm light and restorative experiences.
             </p>
             <div className="opening-hours">
               <h4 className="footer-subheading">Hours of Sanctuary</h4>

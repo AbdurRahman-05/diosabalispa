@@ -6,6 +6,13 @@ import HubSection from './components/HubSection';
 import DiosaCombos from './components/DiosaCombos';
 import MeditationModal from './components/MeditationModal';
 import FlowingMenu from './components/FlowingMenu';
+import IntroSanctuary from './components/IntroSanctuary';
+import SensoryJourney from './components/SensoryJourney';
+import AromaSection from './components/AromaSection';
+import TestimonialsSection from './components/TestimonialsSection';
+import BookingCTA from './components/BookingCTA';
+
+import HeroSection from './components/HeroSection';
 
 const whyYouNeedItems = [
   { 
@@ -39,58 +46,46 @@ export default function HomePage() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   return (
-    <main>
-      {/* HERO SECTION - EXACT ORIGINAL DIOSA BALI SPA MATCH */}
-      <section className="hero-section" id="hero">
-        <div className="hero-bg-wrapper">
-          <img src="/assets/massage_treatment.png" alt="Aura & Zen Spa Sanctuary Background" className="hero-bg-img" />
-          <div className="hero-overlay"></div>
-        </div>
+    <main style={{ background: '#0a0b0a', color: '#f3eee3' }}>
+      
+      {/* REDESIGNED HERO SECTION */}
+      <HeroSection />
 
-        {/* Scrolling Spa Name Marquee */}
-        <div className="hero-marquee-wrapper">
-          <div className="hero-marquee-track">
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-            <span className="hero-marquee-text">Diosa Bali Spa</span>
-            <span className="hero-marquee-dot"></span>
-          </div>
-        </div>
+      {/* INTRO SECTION — "ENTER THE SANCTUARY" */}
+      <IntroSanctuary />
 
-        {/* Floating Sticker Image - Right Corner */}
-        <div className="hero-sticker">
-          <img 
-            src="/assets/ChatGPT Image Jul 23, 2026, 12_23_40 PM.png" 
-            alt="Relaxing Woman at Diosa Bali Spa" 
-            className="hero-sticker-img" 
-          />
-        </div>
-      </section>
-
-      {/* HUB OF WELLNESS SECTION (SECOND SCROLL SECTION) */}
+      {/* HUB OF WELLNESS / SIGNATURE EXPERIENCES SECTION */}
       <HubSection />
 
-      {/* DIOSA COMBO PACKAGES (THIRD SCROLL SECTION - HORIZONTAL MARQUEE) */}
+      {/* DIOSA COMBO PACKAGES SECTION */}
       <DiosaCombos />
 
+      {/* "A JOURNEY THROUGH THE SENSES" */}
+      <SensoryJourney />
+
       {/* WHY YOU NEED DIOSA BALI SPA - FLOWING MENU SHOWCASE */}
-      <section className="dbs-why-you-section" style={{ background: 'var(--bg-secondary)', padding: '80px 0 100px 0' }}>
+      <section className="dbs-why-you-section" style={{ background: '#0a0b0a', padding: '100px 0' }}>
         <div className="container" style={{ marginBottom: '40px' }}>
-          <div className="section-header text-center">
-            <span className="section-tagline">HOLISTIC WELLNESS</span>
-            <h2 className="section-title" style={{ fontSize: 'clamp(1.6rem, 3.2vw, 3rem)', whiteSpace: 'nowrap' }}>Why You Need Diosa Bali Spa</h2>
+          <div className="section-header text-center" style={{ position: 'relative' }}>
+            <div 
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '500px',
+                height: '180px',
+                background: 'radial-gradient(ellipse at center, rgba(217, 119, 6, 0.35) 0%, rgba(212, 175, 55, 0.18) 50%, transparent 75%)',
+                filter: 'blur(45px)',
+                zIndex: 0,
+                pointerEvents: 'none',
+                animation: 'headingGlowPulse 6s ease-in-out infinite alternate'
+              }}
+            />
+            <span className="section-tagline" style={{ position: 'relative', zIndex: 1, color: '#d97706' }}>HOLISTIC WELLNESS</span>
+            <h2 className="section-title" style={{ position: 'relative', zIndex: 1, fontSize: 'clamp(2rem, 3.8vw, 3.4rem)', whiteSpace: 'nowrap', color: '#d4af37', textShadow: '0 0 25px rgba(212, 175, 55, 0.4), 0 0 50px rgba(217, 119, 6, 0.25)' }}>
+              Why You Need Diosa Bali Spa
+            </h2>
           </div>
         </div>
 
@@ -99,22 +94,31 @@ export default function HomePage() {
             height: '520px', 
             position: 'relative', 
             width: '100%', 
-            borderTop: '1px solid rgba(217, 191, 119, 0.3)', 
-            borderBottom: '1px solid rgba(217, 191, 119, 0.3)',
-            boxShadow: '0 15px 40px rgba(0,0,0,0.04)' 
+            borderTop: '1px solid rgba(212, 175, 55, 0.3)', 
+            borderBottom: '1px solid rgba(212, 175, 55, 0.3)',
+            boxShadow: '0 15px 40px rgba(0,0,0,0.6)' 
           }}
         >
           <FlowingMenu
             items={whyYouNeedItems}
             speed={14}
-            textColor="#1e2420"
-            bgColor="var(--bg-secondary)"
-            marqueeBgColor="#1e2420"
-            marqueeTextColor="#d9bf77"
-            borderColor="rgba(217, 191, 119, 0.35)"
+            textColor="#f3eee3"
+            bgColor="#0a0b0a"
+            marqueeBgColor="#181918"
+            marqueeTextColor="#d4af37"
+            borderColor="rgba(212, 175, 55, 0.35)"
           />
         </div>
       </section>
+
+      {/* AROMA & FRAGRANCE EXPERIENCE */}
+      <AromaSection />
+
+      {/* GUEST TESTIMONIALS */}
+      <TestimonialsSection />
+
+      {/* BOOKING CTA */}
+      <BookingCTA />
 
       {/* MEDITATION VIDEO MODAL */}
       <MeditationModal 
