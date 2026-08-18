@@ -107,14 +107,14 @@ export default function Footer() {
               </form>
             ) : (
               <div className="newsletter-success-message" style={{ display: 'block', color: 'var(--accent-gold)' }}>
-                Thank you for joining our Inner Circle sanctuary newsletter!
+                Thank you for joining our Diosa Bali Spa Sanctuary newsletter!
               </div>
             )}
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Aura & Zen Spa Sanctuary. All rights reserved. Designed for holistic restoration.</p>
+          <p>&copy; {new Date().getFullYear()} Diosa Bali Spa Sanctuary. All rights reserved. Designed for holistic restoration.</p>
         </div>
       </div>
     </footer>

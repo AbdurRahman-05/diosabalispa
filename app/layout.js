@@ -6,9 +6,21 @@ import ZenSoundscape from './components/ZenSoundscape';
 import FootReflexologyFloating from './components/FootReflexologyFloating';
 
 export const metadata = {
-  title: "Aura & Zen | Diosa Bali Spa & Luxury Wellness Sanctuary",
-  description: "Immerse yourself in Aura & Zen. A high-end luxury wellness sanctuary offering bespoke massages, organic skincare facials, and holistic body rituals to restore your mind, body, and spirit.",
+  title: "Diosa Bali Spa & Luxury Wellness Sanctuary",
+  description: "A high-end luxury wellness sanctuary offering bespoke massages, organic skincare facials, and holistic body rituals to restore your mind, body, and spirit.",
   keywords: ["Diosa Bali Spa", "Luxury Spa", "Balinese Massage", "Wellness Sanctuary", "Facial Skincare", "Organic Body Wraps"],
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }) {
