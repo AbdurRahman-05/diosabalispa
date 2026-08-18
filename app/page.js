@@ -1,5 +1,7 @@
 'use client';
 
+import './home.css';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import HubSection from './components/HubSection';
@@ -46,7 +48,7 @@ export default function HomePage() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   return (
-    <main style={{ background: '#0a0b0a', color: '#f3eee3' }}>
+    <main style={{ position: 'relative', zIndex: 2, background: '#0a0b0a', color: '#f3eee3' }}>
       
       {/* REDESIGNED HERO SECTION */}
       <HeroSection />

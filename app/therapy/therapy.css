@@ -1,0 +1,388 @@
+﻿/* ---- Therapy Section ---- */
+.therapy-section {
+    background-color: var(--bg-primary);
+    position: relative;
+    z-index: 10;
+}
+
+.therapy-main-heading {
+    color: var(--accent-gold-dark);
+    font-size: 3.5rem;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.therapy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.therapy-card {
+    background-color: var(--bg-secondary);
+    border: 1.5px solid var(--accent-sage);
+    border-radius: 20px;
+    padding: 35px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition-smooth);
+}
+
+.therapy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.therapy-info {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.therapy-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--accent-gold-dark);
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.therapy-desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.therapy-img-wrap {
+    flex-shrink: 0;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.therapy-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.therapy-card:hover .therapy-img {
+    transform: scale(1.06);
+}
+
+@media (max-width: 991px) {
+    .therapy-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 40px auto 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .therapy-card {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 30px 25px;
+        gap: 20px;
+    }
+    
+    .therapy-info {
+        padding-right: 0;
+    }
+    
+    .therapy-img-wrap {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+
+/* ==========================================
+   TREATMENT CARDS & RITUAL BOXES BORDER & THICK TEXT
+   ========================================== */
+.dat-card,
+.diosa-combo-card {
+    border: 1.5px solid var(--accent-gold, #d9bf77) !important;
+    box-shadow: 0 8px 24px rgba(30, 36, 32, 0.08) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.dat-card:hover,
+.diosa-combo-card:hover {
+    border-color: var(--accent-gold-dark, #b69c4a) !important;
+    box-shadow: 0 12px 30px rgba(217, 191, 119, 0.25) !important;
+}
+
+.dat-card p,
+.dat-card .dat-desc,
+.diosa-card-details {
+    color: #1e2420 !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+    line-height: 1.6 !important;
+}
+
+.dat-card h3,
+.diosa-card-title {
+    color: var(--accent-gold-dark, #b69c4a) !important;
+    font-weight: 600 !important;
+}
+
+
+/* ========================================================
+   CINEMATIC HORIZON SCROLL & DEEP DARK EMERALD REDESIGN
+   ======================================================== */
+
+.cinematic-emerald-hero {
+    position: relative;
+    background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.18) 0%, rgba(10, 17, 14, 0.95) 70%), linear-gradient(180deg, #070c0a 0%, #0e1914 100%);
+    color: #f8f6f0;
+    padding-top: 170px;
+    padding-bottom: 70px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Floating Gold Dust Particles Container */
+.gold-dust-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.gold-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #d4af37;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #d4af37, 0 0 20px #e5c158;
+    opacity: 0.6;
+    animation: floatParticle 10s infinite linear;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg) scale(0.6); opacity: 0; }
+    30% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(-100px) rotate(360deg) scale(1.2); opacity: 0; }
+}
+
+/* Cinematic Full-Width Horizon Carousel Container */
+.cinematic-horizon-section {
+    position: relative;
+    padding: 30px 0 60px 0;
+    background: #0e1914;
+    overflow: hidden;
+}
+
+.horizon-header {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.horizon-track-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 24px;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 transparent;
+}
+
+.horizon-track-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.horizon-track-wrapper::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+}
+
+.horizon-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+}
+
+.horizon-card {
+    width: 460px;
+    height: 380px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    background: #14241d;
+    border: 1.5px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.horizon-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #d4af37;
+    box-shadow: 0 30px 70px rgba(212, 175, 55, 0.3);
+}
+
+.horizon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.horizon-card:hover .horizon-img {
+    transform: scale(1.08);
+}
+
+.horizon-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7,12,10,0.1) 0%, rgba(7,12,10,0.92) 85%);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #f8f6f0;
+}
+
+.horizon-badge {
+    align-self: flex-start;
+    background: rgba(212, 175, 55, 0.2);
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.horizon-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: #f8f6f0;
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+.horizon-desc {
+    font-size: 0.9rem;
+    color: rgba(248,246,240,0.85);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+/* Glassmorphism Category Filters */
+.emerald-filter-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0 40px 0;
+}
+
+.emerald-cat-btn {
+    padding: 11px 26px;
+    border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    background: rgba(20, 36, 29, 0.8);
+    color: #f8f6f0;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    backdrop-filter: blur(12px);
+}
+
+.emerald-cat-btn.active,
+.emerald-cat-btn:hover {
+    background: #d4af37;
+    color: #070c0a;
+    border-color: #d4af37;
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+}
+
+.emerald-count-tag {
+    background: rgba(255, 255, 255, 0.18);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Dark Emerald Card Backing & Clean Stacking */
+.dat-card.emerald-card {
+    background-color: #0f1a15 !important;
+    border: 1.5px solid rgba(212, 175, 55, 0.25) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dat-card.emerald-card:hover {
+    border-color: #d4af37 !important;
+}
+
+.dat-card.emerald-card .dat-body {
+    background-color: #0f1a15 !important;
+    color: #f8f6f0 !important;
+}
+
+.dat-card.emerald-card .dat-title {
+    color: #f8f6f0 !important;
+}
+
+.dat-card.emerald-card .dat-desc {
+    color: rgba(248, 246, 240, 0.82) !important;
+}
+
+@media (max-width: 768px) {
+    .horizon-card {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+.dat-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.dat-tag-pill {
+    font-size: 0.76rem;
+    padding: 5px 12px;
+    border-radius: 14px;
+    background: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}

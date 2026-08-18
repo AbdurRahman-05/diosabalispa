@@ -1,0 +1,917 @@
+/* ==========================================================================
+   DIOSA BALI SPA — Brand Content Sections
+   ========================================================================== */
+
+/* ---- About Section ---- */
+.dbs-about {
+    background-color: var(--bg-primary);
+    position: relative;
+    z-index: 10;
+}
+
+.dbs-about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.dbs-lead {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent-gold-dark);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.dbs-body {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 16px;
+}
+
+.dbs-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    padding-top: 36px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.dbs-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dbs-stat-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-gold-dark);
+    line-height: 1;
+}
+
+.dbs-stat-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+/* Stacked image visual */
+.dbs-about-visual {
+    position: relative;
+    width: 100%;
+}
+
+.dbs-img-stack {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.dbs-img-main {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    border: 1.5px solid #d4af37;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    display: block;
+}
+
+.dbs-img-accent {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 3px solid var(--bg-primary);
+    box-shadow: var(--shadow-medium);
+}
+
+.dbs-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--accent-gold-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    box-shadow: 0 8px 24px rgba(163, 135, 95, 0.45);
+    z-index: 2;
+}
+
+.dbs-badge-line1,
+.dbs-badge-line2,
+.dbs-badge-line3 {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.2;
+}
+
+/* ---- Treatments Grid ---- */
+.dbs-treatments {
+    background-color: var(--bg-secondary);
+    position: relative;
+    z-index: 10;
+}
+
+.dbs-treatments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+}
+
+.dbs-treatment-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 36px 30px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.dbs-treatment-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-sage));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.dbs-treatment-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--accent-gold-light);
+}
+
+.dbs-treatment-card:hover::before {
+    transform: scaleX(1);
+}
+
+.dbs-treat-icon {
+    font-size: 2.4rem;
+    margin-bottom: 18px;
+    display: block;
+}
+
+.dbs-treat-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.dbs-treat-desc {
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+}
+
+.dbs-treat-duration {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-gold-dark);
+    background-color: var(--accent-gold-light);
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+
+/* ---- Why Choose Us ---- */
+.dbs-why {
+    position: relative;
+    z-index: 10;
+}
+
+.dbs-why-inner {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #2a3a2c 50%, var(--bg-dark) 100%);
+    padding: 0;
+}
+
+.dbs-why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.dbs-why-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 36px 28px;
+    transition: var(--transition-fast);
+}
+
+.dbs-why-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(197, 168, 128, 0.35);
+    transform: translateY(-4px);
+}
+
+.dbs-why-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(197, 168, 128, 0.15);
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+}
+
+.dbs-why-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.dbs-why-desc {
+    font-size: 0.85rem;
+    color: rgba(251, 249, 246, 0.6);
+    line-height: 1.75;
+}
+
+/* ---- Packages ---- */
+.dbs-packages {
+    background-color: var(--bg-primary);
+    position: relative;
+    z-index: 10;
+}
+
+.dbs-packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+    align-items: start;
+}
+
+.dbs-pkg-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.dbs-pkg-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-medium);
+}
+
+.dbs-pkg-featured {
+    background-color: var(--bg-dark);
+    border-color: var(--accent-gold);
+    transform: scale(1.03);
+}
+
+.dbs-pkg-featured:hover {
+    transform: scale(1.03) translateY(-6px);
+}
+
+.dbs-pkg-header {
+    padding: 32px 30px 24px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.dbs-pkg-featured .dbs-pkg-header {
+    border-color: rgba(197, 168, 128, 0.2);
+}
+
+.dbs-pkg-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent-gold-dark);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+.dbs-pkg-featured .dbs-pkg-tag {
+    background: var(--accent-gold);
+}
+
+.dbs-pkg-name {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.dbs-pkg-featured .dbs-pkg-name {
+    color: #fff;
+}
+
+.dbs-pkg-tagline {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.dbs-pkg-featured .dbs-pkg-tagline {
+    color: rgba(251, 249, 246, 0.55);
+}
+
+.dbs-pkg-list {
+    list-style: none;
+    padding: 24px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.dbs-pkg-list li {
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.dbs-pkg-featured .dbs-pkg-list li {
+    color: rgba(251, 249, 246, 0.7);
+}
+
+.dbs-pkg-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px 28px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.dbs-pkg-featured .dbs-pkg-footer {
+    border-color: rgba(197, 168, 128, 0.2);
+}
+
+.dbs-pkg-price {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--accent-gold-dark);
+}
+
+.dbs-pkg-featured .dbs-pkg-price {
+    color: var(--accent-gold);
+}
+
+/* ---- Testimonials (Client Stories) ---- */
+.dbs-testimonials {
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(217, 191, 119, 0.16) 0%, transparent 45%),
+        linear-gradient(135deg, #faf5ec 0%, #f4eae0 50%, #f7eedf 100%) !important;
+    position: relative;
+    z-index: 10;
+}
+
+.dbs-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+}
+
+.dbs-testi-card {
+    background-color: #ffffff;
+    border: 1px solid rgba(217, 191, 119, 0.35);
+    border-radius: 20px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: var(--transition-fast);
+    box-shadow: 0 10px 30px rgba(182, 156, 74, 0.08);
+}
+
+.dbs-testi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 42px rgba(182, 156, 74, 0.18);
+    border-color: var(--accent-gold);
+}
+
+.dbs-testi-stars {
+    font-size: 1.1rem;
+    color: var(--accent-gold);
+    letter-spacing: 2px;
+}
+
+.dbs-testi-text {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-primary) !important;
+    line-height: 1.75;
+    flex: 1;
+}
+
+.dbs-testi-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.dbs-testi-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-sage));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.dbs-testi-name {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.dbs-testi-city {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* ---- Responsive: DBS Sections ---- */
+@media (max-width: 1100px) {
+    .dbs-about-grid { grid-template-columns: 1fr; gap: 50px; }
+    .dbs-img-stack { height: 380px; }
+    .dbs-treatments-grid { grid-template-columns: repeat(2, 1fr); }
+    .dbs-why-grid { grid-template-columns: repeat(2, 1fr); }
+    .dbs-packages-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .dbs-pkg-featured { transform: scale(1); }
+    .dbs-pkg-featured:hover { transform: translateY(-6px); }
+    .dbs-testimonials-grid { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .dbs-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .dbs-treatments-grid { grid-template-columns: 1fr; }
+    .dbs-why-grid { grid-template-columns: 1fr; }
+    .dbs-testimonials-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ---- Stats Counter Section ---- */
+.dbs-counter-section {
+    position: relative;
+    z-index: 10;
+}
+
+.dbs-counter-bg {
+    background-color: #c5a880;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='120' viewBox='0 0 600 120'%3E%3Ctext x='0' y='100' font-size='120' font-family='Georgia,serif' font-weight='700' fill='rgba(255,255,255,0.08)' letter-spacing='-5'%3Ediosa bali%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    padding: 56px 0;
+}
+
+.dbs-counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.dbs-counter-card {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.dbs-counter-card:hover {
+    background: transparent !important;
+    transform: translateY(-4px);
+}
+
+.dbs-counter-num {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.dbs-counter-label {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .dbs-counter-grid { grid-template-columns: repeat(2, 1fr); }
+    .dbs-counter-num { font-size: 2.4rem; }
+}
+
+
+/* ---- Why Diosa Bali Spa For You ---- */
+.dbs-why-you {
+    background: linear-gradient(135deg, #0e1a10 0%, #1a2e1c 40%, #0e1a10 100%);
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.dbs-why-you::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(78, 101, 80, 0.18) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 50%, rgba(197, 168, 128, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.dbs-why-you-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Left column */
+.dbs-why-you-left {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.dbs-why-you-heading {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
+
+.dbs-why-you-img-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 280px;
+}
+
+.dbs-why-you-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.7) saturate(0.8);
+    transition: transform 0.6s ease;
+}
+
+.dbs-why-you-img-wrap:hover .dbs-why-you-img {
+    transform: scale(1.05);
+}
+
+.dbs-why-you-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10, 20, 12, 0.7) 100%);
+}
+
+/* Right column — feature list */
+.dbs-why-you-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.dbs-why-you-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    transition: background 0.3s ease;
+    position: relative;
+}
+
+.dbs-why-you-item:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.dbs-why-you-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent-gold), var(--accent-sage));
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dbs-why-you-item:hover::before {
+    opacity: 1;
+}
+
+.dbs-why-you-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dbs-why-you-item:hover .dbs-why-you-icon {
+    background: rgba(197, 168, 128, 0.12);
+    border-color: rgba(197, 168, 128, 0.45);
+}
+
+.dbs-why-you-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--accent-gold);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.dbs-why-you-desc {
+    font-size: 0.9rem;
+    color: rgba(251, 249, 246, 0.65);
+    line-height: 1.75;
+}
+
+@media (max-width: 1100px) {
+    .dbs-why-you-grid { grid-template-columns: 1fr; gap: 50px; }
+    .dbs-why-you-heading { font-size: 2.4rem; }
+    .dbs-why-you-item::before { display: none; }
+}
+
+
+/* ---- All Treatments Grid (diosabalispa.in treatments) ---- */
+.dbs-all-treatments {
+    background-color: var(--bg-primary);
+    position: relative;
+    z-index: 10;
+}
+
+.dat-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+    padding-bottom: 180px;
+}
+
+/* ==========================================
+   STICKY CENTER-STACKING EFFECT (STRICT UNIFORM BREADTH & HEIGHT)
+   ========================================== */
+.dat-card {
+    position: sticky;
+    top: calc(50vh - 190px);
+    z-index: calc(10 + var(--card-index, 1));
+    background-color: var(--bg-secondary) !important;
+    border: 1.5px solid var(--accent-gold);
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid !important;
+    grid-template-columns: 360px 1fr !important;
+    align-items: stretch !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
+    box-shadow: 0 20px 50px rgba(15, 20, 18, 0.16);
+    margin-bottom: 65vh;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.dat-card:hover {
+    border-color: var(--accent-gold-dark);
+    box-shadow: 0 25px 60px rgba(184, 150, 92, 0.25);
+}
+
+.dat-img-wrap {
+    position: relative !important;
+    width: 360px !important;
+    min-width: 360px !important;
+    max-width: 360px !important;
+    height: 380px !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
+    overflow: hidden !important;
+    background-color: var(--bg-primary) !important;
+    flex-shrink: 0 !important;
+}
+
+.dat-img {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    transition: transform 0.6s ease;
+}
+
+.dat-card:hover .dat-img {
+    transform: scale(1.06);
+}
+
+.dat-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(30,36,32,0.4) 100%);
+    pointer-events: none;
+}
+
+.dat-body {
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.dat-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.dat-num {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 0.95rem;
+    color: var(--accent-gold-dark);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+}
+
+.dat-badge {
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    background: rgba(184, 150, 92, 0.12);
+    color: var(--accent-gold-dark);
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.dat-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.85rem;
+    font-weight: 600;
+    color: var(--accent-gold-dark) !important;
+    line-height: 1.25;
+    margin-bottom: 10px;
+}
+
+.dat-desc {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    opacity: 0.92;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.dat-action {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.dat-book-btn {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-gold-dark);
+    background: none;
+    border: 1px solid var(--accent-gold-light);
+    border-radius: 20px;
+    padding: 8px 18px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.dat-book-btn:hover {
+    background: var(--accent-gold-dark);
+    color: #fff;
+    border-color: var(--accent-gold-dark);
+}
+
+@media (max-width: 768px) {
+    .dat-card {
+        grid-template-columns: 1fr !important;
+        height: 520px !important;
+        min-height: 520px !important;
+        max-height: 520px !important;
+        top: calc(50vh - 260px);
+        margin-bottom: 50vh;
+    }
+    .dat-img-wrap {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 210px !important;
+        min-height: 210px !important;
+        max-height: 210px !important;
+    }
+    .dat-body {
+        padding: 22px 24px;
+        height: 310px;
+    }
+    .dat-title {
+        font-size: 1.5rem;
+    }
+    .dat-desc {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        font-size: 0.88rem;
+    }
+}
+

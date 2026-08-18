@@ -1,0 +1,18 @@
+﻿/* Custom mouse cursor glow */
+.custom-cursor {
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--accent-gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    mix-blend-mode: difference;
+    opacity: 0;
+}
+
+body:hover .custom-cursor {
+    opacity: 1;
+}

@@ -1,0 +1,140 @@
+/* ==========================================================================
+   FOOT REFLEXOLOGY FLOATING WIDGET & BADGE
+   ========================================================================== */
+.foot-reflex-floating-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9990;
+    display: flex;
+    align-items: center;
+}
+
+.foot-reflex-floating-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(18, 19, 18, 0.94);
+    border: 1.5px solid #d4af37;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 10px 20px 10px 14px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.25);
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+}
+
+.foot-reflex-floating-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: #f59e0b;
+    box-shadow: 0 16px 45px rgba(217, 119, 6, 0.4), 0 0 30px rgba(212, 175, 55, 0.45);
+    background: rgba(28, 22, 16, 0.96);
+}
+
+.floating-pulse-ring {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50px;
+    border: 1.5px solid rgba(217, 119, 6, 0.6);
+    animation: floatingPulse 2.5s infinite ease-out;
+    pointer-events: none;
+}
+
+@keyframes floatingPulse {
+    0% {
+        transform: scale(0.98);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.08);
+        opacity: 0;
+    }
+}
+
+.floating-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d97706 0%, #d4af37 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0b0a;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.foot-reflex-floating-btn:hover .floating-icon-wrap {
+    transform: rotate(12deg) scale(1.08);
+}
+
+.floating-badge-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.floating-badge-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: #d97706;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.floating-badge-title {
+    font-family: var(--font-heading), 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: #d4af37;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] .foot-reflex-floating-btn {
+    background: rgba(248, 243, 235, 0.94);
+    border-color: #b8860b;
+    box-shadow: 0 12px 35px rgba(184, 115, 51, 0.25);
+}
+
+[data-theme="light"] .foot-reflex-floating-btn:hover {
+    background: #fffaf4;
+    border-color: #d97706;
+    box-shadow: 0 16px 45px rgba(184, 115, 51, 0.35);
+}
+
+[data-theme="light"] .floating-badge-title {
+    color: #5c3a21;
+}
+
+/* Responsive adjustment for mobile devices */
+@media (max-width: 640px) {
+    .foot-reflex-floating-widget {
+        bottom: 20px;
+        right: 15px;
+    }
+    .foot-reflex-floating-btn {
+        padding: 8px 14px 8px 10px;
+        gap: 10px;
+    }
+    .floating-icon-wrap {
+        width: 32px;
+        height: 32px;
+    }
+    .floating-badge-tag {
+        font-size: 0.58rem;
+    }
+    .floating-badge-title {
+        font-size: 0.9rem;
+    }
+}

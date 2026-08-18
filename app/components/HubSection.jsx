@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import './HubSection.css';
 
 const hubItems = [
   {
@@ -53,7 +54,7 @@ export default function HubSection() {
   const horizontalTrackRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const updateScroll = () => {
       if (!trackRef.current || !horizontalTrackRef.current) return;
 
       const rect = trackRef.current.getBoundingClientRect();
@@ -71,12 +72,22 @@ export default function HubSection() {
         Math.floor(progress * hubItems.length)
       );
       setActiveIndex(calculatedIdx);
+
+      const trackWidth = horizontalTrackRef.current.scrollWidth;
+      const windowWidth = window.innerWidth;
+      const maxTranslate = Math.max(0, trackWidth - windowWidth + 80);
+      const translateXPx = progress * maxTranslate;
+      horizontalTrackRef.current.style.transform = `translateX(-${translateXPx}px)`;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('resize', updateScroll, { passive: true });
+    updateScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', updateScroll);
+      window.removeEventListener('resize', updateScroll);
+    };
   }, []);
 
   const handleTabClick = (idx) => {
@@ -89,15 +100,6 @@ export default function HubSection() {
       window.scrollTo({ top: targetScrollTop, behavior: 'smooth' });
     }
   };
-
-  // Compute horizontal translate offset (px)
-  let translateXPx = 0;
-  if (horizontalTrackRef.current && typeof window !== 'undefined') {
-    const trackWidth = horizontalTrackRef.current.scrollWidth;
-    const windowWidth = window.innerWidth;
-    const maxTranslate = Math.max(0, trackWidth - windowWidth + 120);
-    translateXPx = scrollProgress * maxTranslate;
-  }
 
   return (
     <section className="hub-horizontal-section" id="hub-wellness" ref={trackRef}>
@@ -146,7 +148,6 @@ export default function HubSection() {
             className="hub-horizontal-track"
             ref={horizontalTrackRef}
             style={{
-              transform: `translateX(-${translateXPx}px)`,
               willChange: 'transform'
             }}
           >

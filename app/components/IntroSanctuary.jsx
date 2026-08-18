@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import './IntroSanctuary.css';
 
 export default function IntroSanctuary() {
   return (

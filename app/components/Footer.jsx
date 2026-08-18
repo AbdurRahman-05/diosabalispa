@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import './Footer.css';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -53,6 +54,7 @@ export default function Footer() {
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/therapy">Therapy</Link></li>
+              <li><Link href="/foot-reflexology">Foot Reflexology &amp; Franchise</Link></li>
               <li><Link href="/gallery">Gallery</Link></li>
               <li><Link href="/booking">Book Now</Link></li>
               <li><Link href="/contact">Contact</Link></li>

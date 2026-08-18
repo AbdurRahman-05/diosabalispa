@@ -1,4 +1,5 @@
 import CountUpCounter from '../components/CountUpCounter';
+import './about.css';
 
 export const metadata = {
   title: "About Our Sanctuary | Diosa Bali Spa | Luxury Wellness",
@@ -7,7 +8,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main style={{ background: '#0a0b0a', color: '#f3eee3', minHeight: '100vh' }}>
+    <main style={{ position: 'relative', zIndex: 2, background: '#0a0b0a', color: '#f3eee3', minHeight: '100vh' }}>
       
       {/* ABOUT PAGE HERO */}
       <section className="about-hero-section section-padding" style={{ background: 'linear-gradient(180deg, #121312 0%, #0a0b0a 100%)', textAlign: 'center', paddingTop: '170px', paddingBottom: '50px', borderBottom: '1px solid rgba(212,175,55,0.15)' }}>
@@ -92,26 +93,26 @@ export default function AboutPage() {
             </div>
 
             <div className="dbs-about-visual">
-              <div className="dbs-img-stack" style={{ position: 'relative' }}>
+              <div className="dbs-img-stack">
                 <img 
                   src="https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-1.jpg" 
                   alt="Diosa Spa Stone Sanctuary Interior" 
                   className="dbs-img-main" 
-                  style={{ borderRadius: '20px', width: '100%', border: '1.5px solid #d4af37', boxShadow: '0 25px 60px rgba(0,0,0,0.85)' }} 
                 />
                 <div 
                   className="dbs-badge" 
                   style={{ 
                     position: 'absolute', 
-                    bottom: '-25px', 
-                    right: '-20px', 
+                    bottom: '-20px', 
+                    right: '-15px', 
                     background: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)', 
                     color: '#0a0b0a', 
-                    padding: '24px 20px', 
+                    padding: '22px 18px', 
                     borderRadius: '50%', 
                     textAlign: 'center', 
                     fontWeight: '700',
-                    boxShadow: '0 12px 30px rgba(217,119,6,0.45)'
+                    boxShadow: '0 12px 30px rgba(217,119,6,0.45)',
+                    zIndex: 5
                   }}
                 >
                   <span className="dbs-badge-line1" style={{ display: 'block', fontSize: '0.8rem', letterSpacing: '0.1em' }}>BALI'S</span>

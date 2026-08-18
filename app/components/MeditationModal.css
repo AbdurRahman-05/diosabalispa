@@ -1,0 +1,173 @@
+﻿/* ==========================================================================
+   12. Booking Confirmation Modal
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 36, 32, 0.45);
+    backdrop-filter: blur(5px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-fast);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.booking-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: 90%;
+    max-width: 520px;
+    background-color: var(--bg-primary);
+    padding: 45px;
+    z-index: 210;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.booking-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.modal-success-icon-wrapper {
+    color: var(--accent-sage);
+    margin-bottom: 25px;
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.modal-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Digital Ticket Styles */
+.digital-ticket {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 35px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.digital-ticket::before,
+.digital-ticket::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--bg-primary);
+    border-radius: 50%;
+    top: 35px;
+    z-index: 5;
+}
+
+.digital-ticket::before { left: -10px; }
+.digital-ticket::after { right: -10px; }
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    border-bottom: 1px dashed var(--accent-gold);
+}
+
+.ticket-logo {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.ticket-type {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    background-color: var(--accent-gold-light);
+    color: var(--accent-gold-dark);
+    padding: 3px 8px;
+}
+
+.ticket-body {
+    padding: 25px;
+}
+
+.ticket-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.ticket-lbl {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.ticket-val {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.ticket-barcode-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid rgba(197, 168, 128, 0.15);
+    padding-top: 20px;
+}
+
+.barcode-svg {
+    width: 60%;
+    height: 35px;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.barcode-num {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+}

@@ -1,0 +1,209 @@
+/* ==========================================================================
+   13. Footer / Contact
+   ========================================================================== */
+.main-footer {
+    background-color: var(--bg-dark);
+    color: rgba(251, 249, 246, 0.7);
+    border-top: 1px solid rgba(251, 249, 246, 0.05);
+    position: relative;
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    isolation: isolate;
+    contain: paint;
+    z-index: 10;
+}
+
+/* Footer Video Background - STRICTLY RESTRICTED TO FOOTER ONLY */
+.footer-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    contain: strict;
+}
+
+.footer-video-element,
+.footer-video-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: blur(8px);
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.footer-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 14, 11, 0.62) 0%,
+        rgba(10, 14, 11, 0.48) 50%,
+        rgba(10, 14, 11, 0.68) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1fr 1.2fr;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.footer-desc {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.footer-subheading {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-bottom: 25px;
+    letter-spacing: 0.05em;
+}
+
+.opening-hours p {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 14px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: rgba(251, 249, 246, 0.7);
+    font-size: 0.88rem;
+    transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--accent-gold);
+    padding-left: 5px;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 0.88rem;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+.footer-contact-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact-item a:hover {
+    color: var(--accent-gold);
+}
+
+.contact-icon {
+    color: var(--accent-gold);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.newsletter-text {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.newsletter-form {
+    display: flex;
+    border-bottom: 1px solid rgba(251, 249, 246, 0.2);
+    padding-bottom: 10px;
+}
+
+.newsletter-form input {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--text-light);
+    flex: 1;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(251, 249, 246, 0.4);
+}
+
+.newsletter-submit-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.newsletter-submit-btn:hover {
+    color: var(--text-light);
+}
+
+.newsletter-success-message {
+    font-size: 0.82rem;
+    color: var(--accent-gold-light);
+    margin-top: 12px;
+    display: none;
+    font-weight: 500;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(251, 249, 246, 0.08);
+    padding-top: 35px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(251, 249, 246, 0.4);
+}

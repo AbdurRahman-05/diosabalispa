@@ -1,0 +1,597 @@
+/* ==========================================================================
+   7. Booking & Scheduler Engine
+   ========================================================================== */
+.booking-section {
+    background-color: var(--bg-secondary);
+    position: relative;
+    z-index: 10;
+}
+
+.scheduler-container {
+    background-color: var(--bg-primary);
+    padding: 50px;
+    border-radius: 0;
+    box-shadow: var(--shadow-medium);
+}
+
+/* Scheduler Progress Header */
+.scheduler-progress {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+    background-color: var(--bg-primary);
+    padding: 0 10px;
+}
+
+.step-num {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+}
+
+.step-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.progress-step.active .step-num {
+    background-color: var(--accent-sage);
+    border-color: var(--accent-sage);
+    color: var(--bg-primary);
+}
+
+.progress-step.active .step-label {
+    color: var(--accent-sage);
+}
+
+.progress-line {
+    position: absolute;
+    top: 19px;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background-color: var(--glass-border);
+    z-index: 1;
+}
+
+.progress-line-fill {
+    height: 100%;
+    background-color: var(--accent-sage);
+    width: 0%;
+    transition: var(--transition-smooth);
+}
+
+/* Scheduler Panels */
+.scheduler-panel {
+    display: none;
+}
+
+.scheduler-panel.active {
+    display: block;
+    animation: panelFadeIn 0.5s ease;
+}
+
+@keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-heading {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--text-primary) !important;
+}
+
+.panel-description {
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.panel-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 30px;
+}
+
+/* Step 1 Content: Services List */
+.booking-services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.booking-service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    padding: 22px 30px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.booking-service-item:hover {
+    border-color: var(--accent-gold-dark);
+}
+
+.booking-service-item.selected {
+    background-color: var(--accent-sage-bg);
+    border-color: var(--accent-sage);
+}
+
+.bs-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.bs-duration {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.bs-price {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+/* ---- Flowing Menu (Step 1 Therapy Selector) ---- */
+.flowing-menu {
+    width: 100%;
+    background-color: var(--bg-dark);
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.flowing-item {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+}
+
+.flowing-item:first-child {
+    border-top: none;
+}
+
+.flowing-item.selected .flowing-link {
+    color: var(--accent-gold);
+}
+
+.flowing-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 36px;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.flowing-text {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.flowing-meta {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    white-space: nowrap;
+}
+
+.flowing-marquee {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-gold);
+    transform: translateY(101%);
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+
+.flowing-marquee-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    will-change: transform;
+}
+
+.flowing-part {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0 2vw;
+    gap: 20px;
+}
+
+.flowing-part span {
+    white-space: nowrap;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--bg-dark);
+    letter-spacing: 0.02em;
+}
+
+.flowing-img {
+    width: 130px;
+    height: 65px;
+    border-radius: 40px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+/* Step 2 Content: Therapists */
+.therapists-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.therapist-card {
+    background-color: var(--bg-secondary);
+    padding: 35px 25px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.therapist-card:hover {
+    border-color: var(--accent-gold-dark);
+}
+
+.therapist-card.selected {
+    background-color: var(--accent-sage-bg);
+    border-color: var(--accent-sage);
+}
+
+.therapist-avatar,
+.therapist-avatar-any {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--accent-sage-light);
+    color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0 auto 20px auto;
+}
+
+.therapist-avatar-any {
+    background-color: var(--accent-gold);
+}
+
+.therapist-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.therapist-title {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-gold-dark);
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.therapist-bio {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Step 3 Content: Date & Time Picker */
+.datetime-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+}
+
+/* Calendar */
+.calendar-wrapper {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.calendar-month-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.calendar-current-month {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    transition: var(--transition-fast);
+}
+
+.calendar-day:hover:not(.disabled) {
+    background-color: rgba(78, 101, 80, 0.1);
+}
+
+.calendar-day.selected {
+    background-color: var(--accent-sage) !important;
+    color: var(--bg-primary) !important;
+}
+
+.calendar-day.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+.calendar-day.today {
+    border: 1px solid var(--accent-gold-dark);
+}
+
+/* Timeslots */
+.timeslots-wrapper {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.time-heading {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.time-slot-btn {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--glass-border);
+    padding: 12px 0;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.time-slot-btn:hover {
+    border-color: var(--accent-gold);
+}
+
+.time-slot-btn.selected {
+    background-color: var(--accent-sage);
+    border-color: var(--accent-sage);
+    color: var(--bg-primary);
+}
+
+/* Step 4: Summary Card */
+.booking-summary-card {
+    background-color: var(--bg-secondary);
+    padding: 35px;
+    margin-bottom: 40px;
+    border-left: 3px solid var(--accent-gold);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.summary-label {
+    color: var(--text-secondary);
+}
+
+.summary-value {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.total-row {
+    border-top: 1px dashed var(--accent-gold);
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.total-row .summary-value {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--accent-sage);
+}
+
+.booking-guest-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    padding: 15px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.form-group input:focus {
+    border-color: var(--accent-sage);
+    background-color: var(--bg-primary);
+}
+
+/* LIGHT THEME OVERRIDES FOR BOOKING PAGE */
+[data-theme="light"] .booking-section,
+[data-theme="light"] .scheduler-container,
+[data-theme="light"] .booking-modal {
+    background-color: #f8f3eb !important;
+    color: #3a281c !important;
+}
+
+[data-theme="light"] .step-num {
+    background-color: #ebdcc9 !important;
+    color: #5c3a21 !important;
+    border-color: rgba(184, 134, 11, 0.35) !important;
+}
+
+[data-theme="light"] .step-label {
+    color: #6e5443 !important;
+}
+
+[data-theme="light"] .progress-step.active .step-num {
+    background-color: #b8860b !important;
+    color: #ffffff !important;
+    border-color: #b8860b !important;
+}
+
+[data-theme="light"] .progress-step.active .step-label {
+    color: #b8860b !important;
+}
+
+[data-theme="light"] .ticket-container {
+    background: #f2e9dc !important;
+    border-color: rgba(184, 134, 11, 0.4) !important;
+    color: #3a281c !important;
+}
+
+[data-theme="light"] .ticket-header {
+    background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="light"] .ticket-header * {
+    color: #ffffff !important;
+}
+
+[data-theme="light"] .ticket-detail-item {
+    background: #fffaf4 !important;
+    border-color: rgba(184, 134, 11, 0.25) !important;
+}
+
+[data-theme="light"] .ticket-detail-item .label {
+    color: #8b6508 !important;
+}
+
+[data-theme="light"] .ticket-detail-item .value {
+    color: #3a281c !important;
+}

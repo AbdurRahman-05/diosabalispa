@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import './CustomCursor.css';
 
 export default function CustomCursor() {
   useEffect(() => {

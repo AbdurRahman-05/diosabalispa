@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import './DiosaCombos.css';
 
 const comboData = [
   {

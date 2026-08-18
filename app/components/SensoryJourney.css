@@ -1,0 +1,154 @@
+/* ==========================================================================
+   IMMERSIVE EXPERIENCE — A JOURNEY THROUGH THE SENSES (3 TOP, 2 BOTTOM)
+   ========================================================================== */
+.sensory-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.sensory-box {
+    width: calc((100% - 48px) / 3);
+    min-width: 290px;
+    max-width: 360px;
+    background: #121312;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.sensory-box:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212, 175, 55, 0.65);
+    box-shadow: 0 20px 45px rgba(217, 119, 6, 0.2);
+}
+
+.sensory-box-image-wrap {
+    height: 165px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.sensory-box-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.sensory-box:hover .sensory-box-img {
+    transform: scale(1.06);
+}
+
+.sensory-box-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(18, 19, 18, 0.95) 100%);
+}
+
+.sensory-box-badge {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    background: rgba(10, 11, 10, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    backdrop-filter: blur(8px);
+    padding: 4px 12px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+}
+
+.sensory-num {
+    font-family: var(--font-heading), 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #d97706;
+}
+
+.sensory-sense {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: #d4af37;
+}
+
+.sensory-box-content {
+    padding: 16px 20px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+.sensory-box-title {
+    font-family: var(--font-heading), 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    color: #d4af37;
+    margin: 0 0 8px 0;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.sensory-box-desc {
+    color: #a8a090;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Light Theme Overrides for Sensory Boxes */
+[data-theme="light"] .sensory-box {
+    background: #f0e4d2 !important;
+    border-color: rgba(184, 134, 11, 0.35) !important;
+    box-shadow: 0 10px 25px rgba(184, 115, 51, 0.12) !important;
+}
+
+[data-theme="light"] .sensory-box-overlay {
+    background: linear-gradient(180deg, transparent 30%, rgba(240, 228, 210, 0.95) 100%) !important;
+}
+
+[data-theme="light"] .sensory-box-badge {
+    background: rgba(248, 243, 235, 0.9) !important;
+    border-color: rgba(184, 134, 11, 0.35) !important;
+}
+
+[data-theme="light"] .sensory-box-title {
+    color: #5c3a21 !important;
+}
+
+[data-theme="light"] .sensory-box-desc {
+    color: #523e30 !important;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+    .sensory-grid {
+        gap: 20px;
+    }
+    .sensory-box {
+        width: calc((100% - 20px) / 2);
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 640px) {
+    .sensory-grid {
+        gap: 16px;
+    }
+    .sensory-box {
+        width: 100%;
+        max-width: 100%;
+    }
+}

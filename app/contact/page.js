@@ -1,5 +1,7 @@
 'use client';
 
+import './contact.css';
+
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
@@ -76,7 +78,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main style={{ background: 'var(--bg-primary)', minHeight: '100vh' }}>
+    <main style={{ position: 'relative', zIndex: 2, background: 'var(--bg-primary)', minHeight: '100vh' }}>
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%)', textAlign: 'center', paddingTop: '150px', paddingBottom: '30px' }}>
         <div className="container">

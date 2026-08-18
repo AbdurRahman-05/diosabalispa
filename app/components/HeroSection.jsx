@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import './HeroSection.css';
 
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);

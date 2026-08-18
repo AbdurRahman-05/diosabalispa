@@ -1,5 +1,7 @@
 'use client';
 
+import './MeditationModal.css';
+
 export default function MeditationModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 

@@ -33,17 +33,24 @@ export default function Navbar() {
       hoverStyles: { bgColor: '#89a58b', textColor: '#1e2420' }
     },
     {
+      label: 'Foot Reflexology',
+      href: '/foot-reflexology',
+      ariaLabel: 'Foot Reflexology & Franchise',
+      rotation: -5,
+      hoverStyles: { bgColor: '#d97706', textColor: '#1e2420' }
+    },
+    {
       label: 'Book Experience',
       href: '/booking',
       ariaLabel: 'Book Experience',
-      rotation: -6,
+      rotation: 5,
       hoverStyles: { bgColor: '#d9bf77', textColor: '#1e2420' }
     },
     {
       label: 'Contact',
       href: '/contact',
       ariaLabel: 'Contact Concierge',
-      rotation: 6,
+      rotation: -6,
       hoverStyles: { bgColor: '#4e6550', textColor: '#fbf9f6' }
     }
   ];

@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import ZenSoundscape from './components/ZenSoundscape';
+import FootReflexologyFloating from './components/FootReflexologyFloating';
 
 export const metadata = {
   title: "Aura & Zen | Diosa Bali Spa & Luxury Wellness Sanctuary",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <ZenSoundscape />
+        <FootReflexologyFloating />
       </body>
     </html>
   );

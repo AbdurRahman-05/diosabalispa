@@ -1,5 +1,7 @@
 'use client';
 
+import './booking.css';
+
 import { useState } from 'react';
 
 // Professional Luxury SVG Icons
@@ -203,7 +205,7 @@ export default function BookingPage() {
   };
 
   return (
-    <main style={{ background: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)' }}>
+    <main style={{ position: 'relative', zIndex: 2, background: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)' }}>
       
       {/* HERO SECTION */}
       <section style={{ 

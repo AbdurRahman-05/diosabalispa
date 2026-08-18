@@ -1,5 +1,7 @@
 'use client';
 
+import './SensoryJourney.css';
+
 const senses = [
   {
     id: 'see',

@@ -1,5 +1,7 @@
 'use client';
 
+import './gallery.css';
+
 import { useState, useEffect } from 'react';
 import DriftWall from '../components/DriftWall';
 
@@ -72,7 +74,7 @@ export default function GalleryPage() {
   };
 
   return (
-    <main className="gallery-main" style={{ minHeight: '100vh', background: isLight ? '#f8f3eb' : '#0a0b0a', color: isLight ? '#3a281c' : '#f3eee3' }}>
+    <main className="gallery-main" style={{ position: 'relative', zIndex: 2, minHeight: '100vh', background: isLight ? '#f8f3eb' : '#0a0b0a', color: isLight ? '#3a281c' : '#f3eee3' }}>
       
       {/* GALLERY PAGE HERO HEADER */}
       <section className="gallery-hero-section" style={{ background: isLight ? 'linear-gradient(180deg, #f8f3eb 0%, #f2e9dc 100%)' : 'linear-gradient(180deg, #121312 0%, #0a0b0a 100%)', textAlign: 'center', paddingTop: '160px', paddingBottom: '40px', borderBottom: isLight ? '1px solid rgba(184,134,11,0.2)' : '1px solid rgba(212,175,55,0.15)' }}>
@@ -174,9 +176,9 @@ export default function GalleryPage() {
             variance={0.45}
             parallax={0.65}
             lift={72}
-            fade={0.5}
-            dim={isLight ? 0.85 : 0.65}
-            overlayColor={isLight ? '#f8f3eb' : '#050605'}
+            fade={0.05}
+            dim={isLight ? 0.95 : 0.88}
+            overlayColor={isLight ? 'rgba(248, 243, 235, 0.05)' : 'rgba(5, 6, 5, 0.1)'}
           />
           <div 
             className="driftwall-instruction-pill"
