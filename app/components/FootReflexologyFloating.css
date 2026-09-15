@@ -8,6 +8,47 @@
     z-index: 9990;
     display: flex;
     align-items: center;
+    gap: 12px;
+}
+
+.experience-switch-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(18, 20, 18, 0.94);
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 10px 16px;
+    border-radius: 50px;
+    color: #d4af37;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.15);
+    white-space: nowrap;
+}
+
+.experience-switch-trigger-btn:hover {
+    background: linear-gradient(135deg, #d4af37 0%, #b69c4a 100%);
+    color: #0a0b0a;
+    border-color: #f3eee3;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.4);
+}
+
+[data-theme="light"] .experience-switch-trigger-btn {
+    background: rgba(248, 243, 235, 0.94);
+    border-color: #b8860b;
+    color: #5c3a21;
+}
+
+[data-theme="light"] .experience-switch-trigger-btn:hover {
+    background: #d4af37;
+    color: #fff;
 }
 
 .foot-reflex-floating-btn {
@@ -122,6 +163,13 @@
     .foot-reflex-floating-widget {
         bottom: 20px;
         right: 15px;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        gap: 8px;
+    }
+    .experience-switch-trigger-btn {
+        padding: 6px 12px;
+        font-size: 0.68rem;
     }
     .foot-reflex-floating-btn {
         padding: 8px 14px 8px 10px;

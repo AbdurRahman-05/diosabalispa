@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import ZenSoundscape from './components/ZenSoundscape';
 import FootReflexologyFloating from './components/FootReflexologyFloating';
+import WelcomeGateway from './components/WelcomeGateway';
 
 export const metadata = {
   title: "Diosa Bali Spa & Luxury Wellness Sanctuary",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <CustomCursor />
+        <WelcomeGateway />
         <Navbar />
         {children}
         <Footer />

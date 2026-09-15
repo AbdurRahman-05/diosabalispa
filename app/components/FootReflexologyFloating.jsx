@@ -7,6 +7,13 @@ import './FootReflexologyFloating.css';
 export default function FootReflexologyFloating() {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleOpenGateway = (e) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('diosa:open-gateway'));
+    }
+  };
+
   return (
     <aside 
       className="foot-reflex-floating-widget"
@@ -14,6 +21,16 @@ export default function FootReflexologyFloating() {
       onMouseLeave={() => setIsHovered(false)}
       aria-label="Foot Reflexology and Franchise Opportunities"
     >
+      <button 
+        type="button" 
+        onClick={handleOpenGateway}
+        className="experience-switch-trigger-btn"
+        title="Switch Experience: Bali Spa or Foot Reflexology"
+        aria-label="Switch Experience"
+      >
+        <span>✦ Switch Experience</span>
+      </button>
+
       <Link 
         href="/foot-reflexology" 
         className="foot-reflex-floating-btn"

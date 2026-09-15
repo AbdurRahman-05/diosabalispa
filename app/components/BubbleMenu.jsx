@@ -243,7 +243,12 @@ export default function BubbleMenu({
                   href={item.href}
                   aria-label={item.ariaLabel || item.label}
                   className="pill-link"
-                  onClick={handleClose}
+                  onClick={(e) => {
+                    if (item.onClick) {
+                      item.onClick(e);
+                    }
+                    handleClose();
+                  }}
                   style={{
                     '--item-rot': `${item.rotation ?? 0}deg`,
                     '--pill-bg': menuBg,

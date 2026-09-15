@@ -52,6 +52,19 @@ export default function Navbar() {
       ariaLabel: 'Contact Concierge',
       rotation: -6,
       hoverStyles: { bgColor: '#4e6550', textColor: '#fbf9f6' }
+    },
+    {
+      label: '✦ Switch Experience',
+      href: '#',
+      onClick: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new Event('diosa:open-gateway'));
+        }
+      },
+      ariaLabel: 'Switch Experience (Bali Spa or Foot Reflexology)',
+      rotation: 0,
+      hoverStyles: { bgColor: '#d4af37', textColor: '#121412' }
     }
   ];
 
