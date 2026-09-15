@@ -98,30 +98,11 @@ export default function WelcomeGateway() {
 
         {/* Compact, Ultra-Luxury Header */}
         <div className="gateway-header">
-          <div className="gateway-emblem-row">
-            <img 
-              src="/assets/diosa-logo.png" 
-              alt="Diosa Bali Spa Logo" 
-              className="gateway-brand-logo" 
-            />
-            <span className="gateway-brand-badge">
-              ✦ SANCTUARY OF TIMELESS REJUVENATION ✦
-            </span>
-          </div>
-
-          <h3 id="gateway-title" className="gateway-title">
-            Welcome to DIOSA
-          </h3>
-
-          <p className="gateway-question">
-            Where would you like to begin?
-          </p>
-
-          <div className="gateway-subtitle-wrap">
-            <span className="div-bar" />
-            <span className="gateway-subtitle">Choose your experience:</span>
-            <span className="div-bar" />
-          </div>
+          <img 
+            src="/assets/diosa-logo.png" 
+            alt="Diosa Bali Spa Logo" 
+            className="gateway-brand-logo" 
+          />
         </div>
 
         {/* Symmetrical Dual Experience Cards */}
