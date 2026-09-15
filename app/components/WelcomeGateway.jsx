@@ -103,6 +103,12 @@ export default function WelcomeGateway() {
             alt="Diosa Bali Spa Logo" 
             className="gateway-brand-logo" 
           />
+          <h3 id="gateway-title" className="gateway-title">
+            Welcome to DIOSA
+          </h3>
+          <p className="gateway-question">
+            Where would you like to begin?
+          </p>
         </div>
 
         {/* Symmetrical Dual Experience Cards */}
