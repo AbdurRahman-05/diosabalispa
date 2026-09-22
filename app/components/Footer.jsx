@@ -32,7 +32,7 @@ export default function Footer() {
           <div className="footer-col branding-col">
             <h3 className="footer-logo">
               <img
-                src="https://diosabalispa.in/wp-content/uploads/2021/12/Diosa-Logo.f4d3aed9506b8b5b69a0-1-scaled.png"
+                src="/assets/diosa-logo.png"
                 alt="Diosa Bali Spa Logo"
                 className="footer-logo-img"
               />
