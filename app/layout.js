@@ -5,6 +5,7 @@ import CustomCursor from './components/CustomCursor';
 import ZenSoundscape from './components/ZenSoundscape';
 import FootReflexologyFloating from './components/FootReflexologyFloating';
 import WelcomeGateway from './components/WelcomeGateway';
+import Script from "next/script"
 
 export const metadata = {
   title: "Diosa Bali Spa & Luxury Wellness Sanctuary",
@@ -43,6 +44,12 @@ export default function RootLayout({ children }) {
         <Footer />
         <ZenSoundscape />
         <FootReflexologyFloating />
+        <Script
+          src="https://analytics-dashboard-wtil.onrender.com/api/v1/tracker.js"
+          data-site-id="site_01M33YZT9MQNVXFY48CGCNAE88"
+          data-site-key="sk_3a00422ef8dbf9ee60e207d1feec7cef"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
