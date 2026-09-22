@@ -1,4 +1,4 @@
-﻿/* ---- Therapy Section ---- */
+/* ---- Therapy Section ---- */
 .therapy-section {
     background-color: var(--bg-primary);
     position: relative;
@@ -105,36 +105,7 @@
 }
 
 
-/* ==========================================
-   TREATMENT CARDS & RITUAL BOXES BORDER & THICK TEXT
-   ========================================== */
-.dat-card,
-.diosa-combo-card {
-    border: 1.5px solid var(--accent-gold, #d9bf77) !important;
-    box-shadow: 0 8px 24px rgba(30, 36, 32, 0.08) !important;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
-}
 
-.dat-card:hover,
-.diosa-combo-card:hover {
-    border-color: var(--accent-gold-dark, #b69c4a) !important;
-    box-shadow: 0 12px 30px rgba(217, 191, 119, 0.25) !important;
-}
-
-.dat-card p,
-.dat-card .dat-desc,
-.diosa-card-details {
-    color: #1e2420 !important;
-    font-weight: 500 !important;
-    opacity: 1 !important;
-    line-height: 1.6 !important;
-}
-
-.dat-card h3,
-.diosa-card-title {
-    color: var(--accent-gold-dark, #b69c4a) !important;
-    font-weight: 600 !important;
-}
 
 
 /* ========================================================
@@ -334,55 +305,233 @@
     font-weight: 700;
 }
 
-/* Dark Emerald Card Backing & Clean Stacking */
+/* ========================================================
+   TREATMENT CARDS GRID & 5-STAR LUXURY RITUAL CARDS
+   ======================================================== */
+
+.dat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 32px;
+    max-width: 1320px;
+    margin: 40px auto 100px auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.dat-card {
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.35s ease;
+}
+
+/* Dark Theme (Default) */
 .dat-card.emerald-card {
-    background-color: #0f1a15 !important;
-    border: 1.5px solid rgba(212, 175, 55, 0.25) !important;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5) !important;
+    background: #0f1a15 !important;
+    border: 1.5px solid rgba(212, 175, 55, 0.28) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55) !important;
 }
 
 .dat-card.emerald-card:hover {
+    transform: translateY(-8px);
     border-color: #d4af37 !important;
+    box-shadow: 0 24px 60px rgba(217, 119, 6, 0.25) !important;
 }
 
-.dat-card.emerald-card .dat-body {
-    background-color: #0f1a15 !important;
-    color: #f8f6f0 !important;
+/* Light Theme */
+[data-theme="light"] .dat-card.emerald-card {
+    background: #ffffff !important;
+    border: 1.5px solid rgba(184, 134, 11, 0.35) !important;
+    box-shadow: 0 12px 35px rgba(184, 115, 51, 0.12) !important;
 }
 
-.dat-card.emerald-card .dat-title {
-    color: #f8f6f0 !important;
+[data-theme="light"] .dat-card.emerald-card:hover {
+    transform: translateY(-8px);
+    border-color: #b8860b !important;
+    box-shadow: 0 22px 55px rgba(184, 115, 51, 0.25) !important;
 }
 
-.dat-card.emerald-card .dat-desc {
-    color: rgba(248, 246, 240, 0.82) !important;
+/* Recommended Highlight */
+.dat-card.highlight-recommended {
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.35) !important;
 }
 
-@media (max-width: 768px) {
-    .horizon-card {
-        width: 320px;
-        height: 320px;
-    }
+[data-theme="light"] .dat-card.highlight-recommended {
+    border-color: #b8860b !important;
+    box-shadow: 0 0 35px rgba(184, 115, 51, 0.35) !important;
+}
+
+/* Card Image Header */
+.dat-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    background: #070c0a;
+}
+
+.dat-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.dat-card:hover .dat-img {
+    transform: scale(1.08);
+}
+
+.dat-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(7, 12, 10, 0.85) 100%);
+    pointer-events: none;
+}
+
+[data-theme="light"] .dat-img-overlay {
+    background: linear-gradient(180deg, transparent 60%, rgba(30, 20, 12, 0.45) 100%);
+}
+
+/* Card Body Content */
+.dat-body {
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
 }
 
 .dat-card-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .dat-tag-pill {
     font-size: 0.76rem;
     padding: 5px 12px;
-    border-radius: 14px;
-    background: rgba(212, 175, 55, 0.15);
-    color: #d4af37;
+    border-radius: 20px;
     font-weight: 600;
     letter-spacing: 0.03em;
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    background: rgba(212, 175, 55, 0.15);
+    color: #e6be76;
     border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+[data-theme="light"] .dat-tag-pill {
+    background: rgba(184, 134, 11, 0.12);
+    color: #8c4a16;
+    border-color: rgba(184, 134, 11, 0.28);
+}
+
+.dat-title {
+    font-family: var(--font-heading), 'Cormorant Garamond', serif !important;
+    font-size: 1.65rem !important;
+    font-weight: 600 !important;
+    color: #f3eee3 !important;
+    margin: 0 0 10px 0 !important;
+    line-height: 1.25 !important;
+    transition: color 0.3s ease;
+}
+
+.dat-card:hover .dat-title {
+    color: #d4af37 !important;
+}
+
+[data-theme="light"] .dat-title {
+    color: #422817 !important;
+}
+
+[data-theme="light"] .dat-card:hover .dat-title {
+    color: #8c4a16 !important;
+}
+
+.dat-desc {
+    font-size: 0.92rem !important;
+    line-height: 1.65 !important;
+    color: rgba(243, 238, 227, 0.82) !important;
+    margin: 0 0 22px 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+}
+
+[data-theme="light"] .dat-desc {
+    color: #594235 !important;
+}
+
+/* Card Actions */
+.dat-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(212, 175, 55, 0.18);
+    margin-top: auto;
+}
+
+[data-theme="light"] .dat-action {
+    border-top-color: rgba(184, 134, 11, 0.2);
+}
+
+.dat-action button {
+    transition: all 0.3s ease;
+}
+
+.dat-action button:hover {
+    background: rgba(212, 175, 55, 0.15) !important;
+    border-color: #d4af37 !important;
+    transform: translateY(-2px);
+}
+
+[data-theme="light"] .dat-action button:hover {
+    background: rgba(184, 134, 11, 0.12) !important;
+    border-color: #8c4a16 !important;
+}
+
+.dat-action a {
+    transition: all 0.3s ease;
+}
+
+.dat-action a:hover {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(217, 119, 6, 0.45);
+}
+
+@media (max-width: 900px) {
+    .dat-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+        padding: 0 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .dat-grid {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+    }
+    .dat-img-wrap {
+        height: 200px;
+    }
+    .dat-body {
+        padding: 20px 18px;
+    }
 }
