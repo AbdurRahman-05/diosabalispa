@@ -44,12 +44,13 @@ export default function RootLayout({ children }) {
         <Footer />
         <ZenSoundscape />
         <FootReflexologyFloating />
-        <Script
-          src="https://analytics-dashboard-wtil.onrender.com/api/v1/tracker.js"
-          data-site-id="site_01M33YZT9MQNVXFY48CGCNAE88"
-          data-site-key="sk_3a00422ef8dbf9ee60e207d1feec7cef"
-          strategy="afterInteractive"
-        />
+       <Script
+           src="https://analytics-dashboard-wtil.onrender.com/api/v1/tracker.js"
+           data-endpoint="https://analytics-dashboard-wtil.onrender.com"
+           data-site-id="site_01M33YZT9MQNVXFY48CGCNAE88"
+           data-site-key="sk_3a00422ef8dbf9ee60e207d1feec7cef"
+           strategy="afterInteractive"
+       />
       </body>
     </html>
   );
