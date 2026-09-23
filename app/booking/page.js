@@ -127,6 +127,7 @@ const branches = [
 ];
 
 function BookingContent() {
+  const [isMounted, setIsMounted] = useState(false);
   const [step, setStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -160,6 +161,10 @@ function BookingContent() {
     'Foot Reflexology & Combos',
     ...rawCategories.filter(c => c !== 'Foot Reflexology & Combos')
   ];
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (therapyParam) {
@@ -200,6 +205,26 @@ function BookingContent() {
       m.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesSearch;
   });
+
+  if (!isMounted) {
+    return (
+      <main suppressHydrationWarning style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        background: 'var(--bg-primary)', 
+        color: 'var(--accent-gold)' 
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <LotusStarIcon />
+          <h2 style={{ fontFamily: 'var(--font-heading)', marginTop: '16px', fontSize: '1.6rem' }}>
+            Entering Diosa Booking Sanctuary...
+          </h2>
+        </div>
+      </main>
+    );
+  }
 
   const handleNextStep = () => {
     setValidationError('');
@@ -255,7 +280,7 @@ function BookingContent() {
   };
 
   return (
-    <main style={{ position: 'relative', zIndex: 2, background: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)' }}>
+    <main suppressHydrationWarning style={{ position: 'relative', zIndex: 2, background: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)' }}>
       
       {/* HERO SECTION */}
       <section style={{ 
@@ -308,6 +333,7 @@ function BookingContent() {
               ].map(s => (
                 <button
                   key={s.num}
+                  suppressHydrationWarning
                   onClick={() => setStep(s.num)}
                   style={{
                     display: 'flex',
@@ -391,6 +417,7 @@ function BookingContent() {
                       </span>
                       <input 
                         type="text"
+                        suppressHydrationWarning
                         placeholder="Search massage by name or benefit..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -408,6 +435,7 @@ function BookingContent() {
                     </div>
 
                     <select
+                      suppressHydrationWarning
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
                       style={{
@@ -851,6 +879,7 @@ function BookingContent() {
             }}>
               {step > 1 ? (
                 <button 
+                  suppressHydrationWarning
                   onClick={handlePrevStep} 
                   style={{ 
                     padding: '12px 28px', 
@@ -868,6 +897,7 @@ function BookingContent() {
 
               {step < 4 && (
                 <button 
+                  suppressHydrationWarning
                   onClick={handleNextStep} 
                   style={{ 
                     padding: '12px 36px', 
