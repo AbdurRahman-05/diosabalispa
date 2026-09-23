@@ -2,7 +2,8 @@
 
 import './booking.css';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 // Professional Luxury SVG Icons
 const SearchIcon = () => (
@@ -89,8 +90,14 @@ const massageTypes = [
   { id: 'full-hand', name: "Full Hand's Massage", duration: '45 Mins', category: 'Express Treatments', desc: 'Acupressure & friction on hands to relieve tension and restore balance.' },
   { id: 'chest-abdomen', name: 'Chest & Abdomen Massage', duration: '45 Mins', category: 'Express Treatments', desc: 'Kneading & skin rolling supporting digestion and strengthening abdomen posture.' },
   { id: 'full-back', name: 'Full Back Massage', duration: '45 / 60 Mins', category: 'Express Treatments', desc: 'Focuses on spinal alignment, relieving back tightness, anxiety, and poor posture.' },
-  { id: 'foot-leg', name: 'Foot & Leg Massage', duration: '45 / 60 Mins', category: 'Reflexology & Feet', desc: 'Leg circulation stretching, reducing swelling, pain, and promoting recovery.' },
-  { id: 'foot-reflexology', name: 'Foot Reflexology', duration: '45 / 60 Mins', category: 'Reflexology & Feet', desc: 'Pressure points linking foot zones to body organs for holistic internal healing.' },
+
+  // FOOT REFLEXOLOGY SANCTUARY & COMBOS
+  { id: 'foot-reflexology', name: 'Foot Reflexology', duration: '30 / 45 / 60 Mins', category: 'Foot Reflexology & Combos', desc: 'Ancient pressure point therapy calibrated to 7,000+ nerve endings. Relieves stress, boosts circulation, and promotes deep healing.' },
+  { id: 'leg-foot-massage', name: 'Leg & Foot Massage', duration: '45 / 60 Mins', category: 'Foot Reflexology & Combos', desc: 'Instantly soothes tired legs and calves, improves blood circulation, and aids deep muscle recovery.' },
+  { id: 'foot-shoulders-back', name: 'Foot Reflexology + Shoulders & Back', duration: '60 Mins', category: 'Foot Reflexology & Combos', desc: 'Signature Combo Ritual: 45m Foot Reflexology + 15m Shoulders & Back. Relieves stiffness, knotting, and screen fatigue.' },
+  { id: 'foot-back-arms-shoulders', name: 'Foot Reflexology + Back, Arms & Shoulders', duration: '75 Mins', category: 'Foot Reflexology & Combos', desc: 'Signature Combo Ritual: 45m Foot Reflexology + 30m Back, Arms & Shoulders. Boosts lymphatic drainage and eases upper-body tension.' },
+  { id: 'foot-body-stretches', name: 'Foot Reflexology + Body Stretches', duration: '90 Mins', category: 'Foot Reflexology & Combos', desc: 'Signature Combo Ritual: 45m Foot Reflexology + 45m Body Stretches. Relieves muscle tension, restores mobility, and leaves you deeply refreshed.' },
+
   { id: 'hand-reflexology', name: 'Hand Reflexology', duration: '45 Mins', category: 'Reflexology & Feet', desc: 'Hand reflex points alleviating headaches, back pain, and shoulder pressure.' },
   { id: 'healing-therapies', name: 'Healing Therapies (Abhyangam & Sound)', duration: '90 / 120 Mins', category: 'Holistic Mind', desc: 'Abhyangam, Herbal Powder, and Tibetan Healing Sound Therapy.' },
   { id: 'body-wrap', name: 'Body Wrap Rituals (Spirulina & Mud)', duration: '60 / 90 Mins', category: 'Body Wraps & Scrubs', desc: 'Spirulina, Seaweed Mud, Sandalwood & Clay Wraps for radiant skin glow.' },
@@ -119,7 +126,7 @@ const branches = [
   { id: 'pondicherry', name: 'Pondicherry Sanctuary', address: 'Heritage Town, Pondicherry' }
 ];
 
-export default function BookingPage() {
+function BookingContent() {
   const [step, setStep] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -141,13 +148,56 @@ export default function BookingPage() {
 
   // Modal / Confirmation state
   const [isVoucherOpen, setIsVoucherOpen] = useState(false);
+  const [selectedFromReflexology, setSelectedFromReflexology] = useState(false);
 
-  const categories = ['All', ...new Set(massageTypes.map(m => m.category))];
+  const searchParams = useSearchParams();
+  const therapyParam = searchParams ? searchParams.get('therapy') : null;
+  const categoryParam = searchParams ? searchParams.get('category') : null;
+
+  const rawCategories = [...new Set(massageTypes.map(m => m.category))];
+  const categories = [
+    'All',
+    'Foot Reflexology & Combos',
+    ...rawCategories.filter(c => c !== 'Foot Reflexology & Combos')
+  ];
+
+  useEffect(() => {
+    if (therapyParam) {
+      const decodedTherapy = decodeURIComponent(therapyParam).toLowerCase().trim();
+      const matched = massageTypes.find(m => 
+        m.id.toLowerCase() === decodedTherapy || 
+        m.name.toLowerCase() === decodedTherapy ||
+        m.name.toLowerCase().replace(/[^a-z0-9]/g, '') === decodedTherapy.replace(/[^a-z0-9]/g, '') ||
+        m.name.toLowerCase().includes(decodedTherapy) ||
+        decodedTherapy.includes(m.name.toLowerCase()) ||
+        decodedTherapy.replace(/[^a-z0-9]/g, '').includes(m.id.replace(/[^a-z0-9]/g, ''))
+      );
+      if (matched) {
+        setSelectedMassage(matched);
+        setSelectedCategory(matched.category);
+        setSelectedFromReflexology(true);
+      }
+    } else if (categoryParam) {
+      const decodedCat = decodeURIComponent(categoryParam).toLowerCase().trim();
+      const matchedCat = categories.find(c => 
+        c.toLowerCase() === decodedCat || 
+        c.toLowerCase().replace(/[^a-z0-9]/g, '') === decodedCat.replace(/[^a-z0-9]/g, '')
+      );
+      if (matchedCat) {
+        setSelectedCategory(matchedCat);
+      }
+    }
+  }, [therapyParam, categoryParam]);
 
   const filteredMassages = massageTypes.filter(m => {
-    const matchesCat = selectedCategory === 'All' || m.category === selectedCategory;
-    const matchesSearch = m.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          m.desc.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCat = 
+      selectedCategory === 'All' || 
+      m.category === selectedCategory ||
+      (selectedCategory === 'Reflexology & Feet' && m.category === 'Foot Reflexology & Combos');
+    const matchesSearch = 
+      m.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      m.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesSearch;
   });
 
@@ -223,7 +273,7 @@ export default function BookingPage() {
             Book Your Spa Experience
           </h1>
           <p className="section-subtitle" style={{ maxWidth: '680px', margin: '0 auto', opacity: 0.88, lineHeight: 1.6 }}>
-            Select your preferred therapy from our complete 44 spa rituals, choose your date &amp; slot timing, enter your contact details, and send your request directly to the Admin.
+            Select your preferred therapy from our complete {massageTypes.length} spa rituals &amp; foot reflexology treatments, choose your date &amp; slot timing, enter your contact details, and send your request directly to the Admin.
           </p>
         </div>
       </section>
@@ -323,13 +373,13 @@ export default function BookingPage() {
                 <div style={{ marginBottom: '25px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                   <div>
                     <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'var(--accent-gold-dark)', fontWeight: '700' }}>
-                      STEP 1 OF 4 — ALL 44 MASSAGES &amp; RITUALS
+                      STEP 1 OF 4 — ALL {massageTypes.length} MASSAGES &amp; RITUALS
                     </span>
                     <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.1rem', color: 'var(--accent-gold)', margin: '4px 0 8px 0' }}>
                       Select Your Massage Ritual
                     </h3>
                     <p style={{ opacity: 0.8, fontSize: '0.92rem' }}>
-                      Browse through all 44 authentic therapies from our Therapy &amp; Rituals collection.
+                      Browse through all {massageTypes.length} authentic therapies from our Spa Rituals and Foot Reflexology collection.
                     </p>
                   </div>
 
@@ -372,11 +422,59 @@ export default function BookingPage() {
                       }}
                     >
                       {categories.map(cat => (
-                        <option key={cat} value={cat}>{cat === 'All' ? 'All Categories (44)' : cat}</option>
+                        <option key={cat} value={cat}>{cat === 'All' ? `All Categories (${massageTypes.length})` : cat}</option>
                       ))}
                     </select>
                   </div>
                 </div>
+
+                {/* PRE-SELECTED REFLEXOLOGY ALERT BANNER */}
+                {selectedFromReflexology && selectedMassage && (
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(217, 119, 6, 0.18) 0%, rgba(212, 175, 55, 0.1) 100%)',
+                    border: '1.5px solid var(--accent-gold)',
+                    borderRadius: '16px',
+                    padding: '16px 20px',
+                    marginBottom: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '12px',
+                    boxShadow: '0 8px 25px rgba(217, 119, 6, 0.15)'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <span style={{ fontSize: '1.5rem' }}>✨</span>
+                      <div>
+                        <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent-gold)', fontWeight: '700' }}>
+                          Pre-selected from Foot Reflexology Sanctuary
+                        </div>
+                        <div style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-primary)' }}>
+                          {selectedMassage.name} <span style={{ opacity: 0.8, fontSize: '0.9rem', fontWeight: '400' }}>({selectedMassage.duration})</span>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setStep(2)}
+                      style={{
+                        background: 'var(--accent-gold)',
+                        color: '#1a120b',
+                        border: 'none',
+                        borderRadius: '25px',
+                        padding: '10px 22px',
+                        fontWeight: '700',
+                        fontSize: '0.88rem',
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
+                    >
+                      Proceed to Slot Timing →
+                    </button>
+                  </div>
+                )}
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', maxHeight: '550px', overflowY: 'auto', paddingRight: '6px' }}>
                   {filteredMassages.map(m => {
@@ -901,5 +999,26 @@ export default function BookingPage() {
       )}
 
     </main>
+  );
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense fallback={
+      <main style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        background: 'var(--bg-primary)', 
+        color: 'var(--accent-gold)',
+        fontFamily: 'var(--font-heading)',
+        fontSize: '1.4rem'
+      }}>
+        Loading Diosa Spa Booking Sanctuary...
+      </main>
+    }>
+      <BookingContent />
+    </Suspense>
   );
 }

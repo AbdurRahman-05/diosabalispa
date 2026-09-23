@@ -217,7 +217,7 @@ export default function FootReflexologyPage() {
           </p>
 
           <div className="reflex-hero-btns" style={{ position: 'relative', zIndex: 1 }}>
-            <Link href="/booking" className="btn btn-primary" style={{ borderRadius: '30px', padding: '16px 36px' }}>
+            <Link href={`/booking?category=${encodeURIComponent('Foot Reflexology & Combos')}`} className="btn btn-primary" style={{ borderRadius: '30px', padding: '16px 36px' }}>
               Book Reflexology Session
             </Link>
             <a href="#franchise-section" className="btn btn-secondary" style={{ borderRadius: '30px', padding: '16px 36px' }}>
@@ -287,7 +287,7 @@ export default function FootReflexologyPage() {
 
                   <div className="therapy-action-btns">
                     <Link 
-                      href={`/booking?therapy=${encodeURIComponent(therapy.title || therapy.comboParts.map(c => c.name).join(' + '))}`}
+                      href={`/booking?therapy=${therapy.id}&category=${encodeURIComponent('Foot Reflexology & Combos')}`}
                       className="btn-reserve-sm"
                     >
                       Book Session →
@@ -331,9 +331,9 @@ export default function FootReflexologyPage() {
               <table className="membership-table">
                 <thead>
                   <tr>
-                    <th>HOURS</th>
-                    <th>YOU PAY</th>
-                    <th>YOU GET</th>
+                    <th className="membership-th-hours">HOURS</th>
+                    <th className="membership-th-pay">YOU PAY</th>
+                    <th className="membership-th-get">YOU GET</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -342,8 +342,10 @@ export default function FootReflexologyPage() {
                       <td className="membership-hours-col">{pkg.hours}</td>
                       <td className="membership-pay-col">{pkg.pay}</td>
                       <td className="membership-get-col">
-                        <span>{pkg.get}</span>
-                        <span className="membership-bonus-badge">{pkg.bonus}</span>
+                        <div className="membership-get-inner">
+                          <span className="membership-get-val">{pkg.get}</span>
+                          <span className="membership-bonus-badge">{pkg.bonus}</span>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -495,13 +497,13 @@ export default function FootReflexologyPage() {
                 <div className="franchise-model-space">{m.space}</div>
 
                 <div className="franchise-financial-pill">
-                  <div>
+                  <div className="franchise-financial-item">
                     <div className="franchise-financial-label">Setup Capex</div>
                     <div className="franchise-financial-val">{m.investment}</div>
                   </div>
-                  <div style={{ textAlign: 'right' }}>
+                  <div className="franchise-financial-item" style={{ textAlign: 'right' }}>
                     <div className="franchise-financial-label">Est. Payback</div>
-                    <div className="franchise-financial-val" style={{ color: '#e6be76' }}>{m.payback}</div>
+                    <div className="franchise-financial-val franchise-financial-val-gold">{m.payback}</div>
                   </div>
                 </div>
 
