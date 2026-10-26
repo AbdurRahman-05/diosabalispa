@@ -131,28 +131,10 @@ export default function FootReflexologyPage() {
       features: [
         'High-volume urban wellness format with highest net profit margins (42% - 48%)',
         'Full combo therapy menu: Shoulders, Back, Arms & Body Stretches (₹1,300 - ₹2,000)',
-        '6 to 8 certified reflexologists + 1 Senior Spa Concierge Manager provided',
+        '6 to 8 certified reflexologists + 1 Senior Reflexology Concierge Manager provided',
         'VIP private couple recliners and ambient aromatherapy installation',
         'Dominant pre-paid Membership sales driver creating upfront operational liquidity',
         'Comprehensive digital marketing launch campaign and influencer PR'
-      ]
-    },
-    {
-      tier: 'TIER 3 — REGIONAL MASTER',
-      name: 'Master Spa & Reflexology Center',
-      space: '1,500+ Sq. Ft. • Full Sanctuary Suites + Reflexology Zone',
-      investment: '₹55L – ₹75 Lakhs',
-      monthlyRevenue: '₹18.0L – ₹28.0 Lakhs / mo',
-      payback: '14 – 18 Months',
-      capacity: '120+ Sessions / Day',
-      featured: false,
-      features: [
-        'Exclusive territorial exclusivity across designated city or high-growth district',
-        'Multi-unit expansion rights and sub-franchise royalty revenue share',
-        'Full spectrum Balinese spa suites + express foot reflexology theater',
-        'Dedicated Master Therapist Onboarding & Continuous Audit Team',
-        'Multi-tier Membership passport valid across all regional branches',
-        'VIP Concierge customer care line & centralized call center handling'
       ]
     }
   ];
@@ -293,7 +275,7 @@ export default function FootReflexologyPage() {
                       Book Session →
                     </Link>
                     <a 
-                      href={`https://wa.me/919344781164?text=${encodeURIComponent(`Hi Diosa Spa, I would like to inquire/book the ${therapy.title || therapy.comboParts.map(c => c.name).join(' + ')} therapy.`)}`}
+                      href={`https://wa.me/919344781164?text=${encodeURIComponent(`Hi Diosa Reflexology, I would like to inquire/book the ${therapy.title || therapy.comboParts.map(c => c.name).join(' + ')} therapy.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-wa-sm"
@@ -364,7 +346,7 @@ export default function FootReflexologyPage() {
             <div className="membership-perk-card">
               <div className="membership-perk-icon">⚖</div>
               <div className="membership-perk-title">All Therapies Included</div>
-              <div className="membership-perk-desc">Redeemable towards any foot reflexology, combo sessions, and signature body therapies.</div>
+              <div className="membership-perk-desc">Redeemable towards any foot reflexology, leg &amp; foot massage, and restorative combo sessions.</div>
             </div>
             <div className="membership-perk-card">
               <div className="membership-perk-icon">★</div>
@@ -376,7 +358,7 @@ export default function FootReflexologyPage() {
           {/* Membership CTA */}
           <div className="membership-cta-wrap">
             <a 
-              href="https://wa.me/919344781164?text=Hi%20Diosa%20Spa%20Team,%20I%20am%20interested%20in%20joining%20the%20Membership%20Packages%20(7%20Hours%20/%2016%20Hours)."
+              href="https://wa.me/919344781164?text=Hi%20Diosa%20Team,%20I%20am%20interested%20in%20joining%20the%20Membership%20Packages%20(7%20Hours%20/%2016%20Hours)."
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
@@ -434,7 +416,7 @@ export default function FootReflexologyPage() {
                   View ROI &amp; Models ↓
                 </a>
                 <a 
-                  href="https://wa.me/919344781164?text=Hi%20Diosa%20Spa%20Team,%20I%20am%20interested%20in%20the%20Foot%20Reflexology%20Franchise%20Opportunity." 
+                  href="https://wa.me/919344781164?text=Hi%20Diosa%20Team,%20I%20am%20interested%20in%20the%20Foot%20Reflexology%20Franchise%20Opportunity." 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="btn-wa-sm"
@@ -526,7 +508,7 @@ export default function FootReflexologyPage() {
                     Apply for {m.name.split(' ')[0]} Model →
                   </a>
                   <a 
-                    href={`https://wa.me/919344781164?text=${encodeURIComponent(`Hi Diosa Spa, I am interested in exploring the ${m.name} (${m.tier}) franchise model.`)}`}
+                    href={`https://wa.me/919344781164?text=${encodeURIComponent(`Hi Diosa Reflexology Team, I am interested in exploring the ${m.name} (${m.tier}) franchise model.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-sm"
@@ -576,7 +558,7 @@ export default function FootReflexologyPage() {
               <div className="franchise-why-icon">🌿</div>
               <h4 className="franchise-why-title">Certified Master Therapists</h4>
               <p className="franchise-why-desc">
-                Sourcing, Indo-Balinese technique training, and ongoing quality audits are fully managed by Diosa Central Spa Academy.
+                Sourcing, Indo-Balinese technique training, and ongoing quality audits are fully managed by Diosa Central Reflexology Academy.
               </p>
             </div>
           </div>
@@ -602,7 +584,7 @@ export default function FootReflexologyPage() {
                   Your franchise application has been forwarded to our Executive Director. Our team will contact you via WhatsApp and Phone within 24 hours.
                 </p>
                 <a 
-                  href="https://wa.me/919344781164?text=Hi%20Diosa%20Spa%20Team,%20I%20have%20submitted%20my%20franchise%20inquiry." 
+                  href="https://wa.me/919344781164?text=Hi%20Diosa%20Team,%20I%20have%20submitted%20my%20Foot%20Reflexology%20franchise%20inquiry." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-primary"
@@ -681,7 +663,6 @@ export default function FootReflexologyPage() {
                   >
                     <option value="Reflexology Express Studio (400-600 sq.ft)">Reflexology Express Studio (400-600 sq.ft)</option>
                     <option value="Sanctuary Reflexology Lounge (700-1200 sq.ft)">Sanctuary Reflexology Lounge (700-1200 sq.ft)</option>
-                    <option value="Master Spa & Reflexology Center (1500+ sq.ft)">Master Spa &amp; Reflexology Center (1500+ sq.ft)</option>
                   </select>
                 </div>
 

@@ -626,12 +626,13 @@
     font-weight: 600;
 }
 
-/* 3 Franchise Model Cards */
+/* Franchise Model Cards */
 .franchise-models-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+    max-width: 960px;
+    margin: 0 auto 60px auto;
     align-items: stretch;
 }
 

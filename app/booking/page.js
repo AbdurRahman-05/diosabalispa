@@ -99,12 +99,40 @@ const massageTypes = [
   { id: 'foot-body-stretches', name: 'Foot Reflexology + Body Stretches', duration: '90 Mins', category: 'Foot Reflexology & Combos', desc: 'Signature Combo Ritual: 45m Foot Reflexology + 45m Body Stretches. Relieves muscle tension, restores mobility, and leaves you deeply refreshed.' },
 
   { id: 'hand-reflexology', name: 'Hand Reflexology', duration: '45 Mins', category: 'Reflexology & Feet', desc: 'Hand reflex points alleviating headaches, back pain, and shoulder pressure.' },
-  { id: 'healing-therapies', name: 'Healing Therapies (Abhyangam & Sound)', duration: '90 / 120 Mins', category: 'Holistic Mind', desc: 'Abhyangam, Herbal Powder, and Tibetan Healing Sound Therapy.' },
-  { id: 'body-wrap', name: 'Body Wrap Rituals (Spirulina & Mud)', duration: '60 / 90 Mins', category: 'Body Wraps & Scrubs', desc: 'Spirulina, Seaweed Mud, Sandalwood & Clay Wraps for radiant skin glow.' },
-  { id: 'body-polish', name: 'Body Polish & Treatment', duration: '60 / 90 Mins', category: 'Body Wraps & Scrubs', desc: 'Bali Coconut Body Polish and Full Body Facial for deep cleansing.' },
-  { id: 'wellness-facial', name: 'Wellness Spa Facial Rituals', duration: '60 / 90 Mins', category: 'Skincare Rituals', desc: 'Aromatherapy, Red Wine, Thai Whitening & Hot Stone Facial treatments.' },
-  { id: 'spa-pedicure', name: 'Spa Pedicure Rituals', duration: '60 Mins', category: 'Reflexology & Feet', desc: 'Peppermint Chiller, Citrus, Crystal & Hot Stone Spa Pedicures.' },
-  { id: 'rejuvenating-bath', name: 'Rejuvenating Hydro Bath Rituals', duration: '45 / 60 Mins', category: 'Hydro Therapy Baths', desc: 'Steam Bath, Aroma Hot Tub, Flower Bath & Bali Herbal Baths.' }
+  
+  // 2026 ORGANIC BODY SCRUBS
+  { id: 'sugar-honey-scrub', name: 'Sugar & Honey Body Scrub', duration: '45 Mins', category: 'Body Scrubs', desc: 'Natural cane sugar and golden honey exfoliate dead cells, clear blemishes, and lock in deep moisture.' },
+  { id: 'rice-oats-scrub', name: 'Rice & Oats Body Scrub', duration: '45 Mins', category: 'Body Scrubs', desc: 'Balinese ground rice and colloidal oats gently polish while soothing sensitive, irritated skin.' },
+  { id: 'coffee-salt-scrub', name: 'Coffee & Salt Body Scrub', duration: '45 Mins', category: 'Body Scrubs', desc: 'Fresh roasted coffee grounds and sea salts stimulate lymphatic flow, combat cellulite, and flush toxins.' },
+  { id: 'brown-sugar-coconut-scrub', name: 'Brown Sugar & Coconut Butter Body Scrub', duration: '45 Mins', category: 'Body Scrubs', desc: 'Caramel brown sugar and raw coconut butter melt into dry areas to eliminate flakiness and renew luster.' },
+  { id: 'raspberry-scrub', name: 'Raspberry Body Scrub', duration: '45 Mins', category: 'Body Scrubs', desc: 'Antioxidant-packed raspberry polish brightening dull skin, smoothing texture, and fighting skin aging.' },
+  { id: 'blueberry-scrub', name: 'Blueberry Body Scrub', duration: '45 Mins', category: 'Body Scrubs', desc: 'Enriched with blueberry fruit AHAs and flavonoids to refine pores and boost micro-circulation.' },
+
+  // 2026 REJUVENATING BODY MASKS & WRAPS
+  { id: 'cucumber-mask', name: 'Cucumber Body Mask', duration: '45 Mins', category: 'Body Masks & Wraps', desc: 'Cooling cucumber paste soothing sunburn, reducing redness, and restoring dewy skin bounce.' },
+  { id: 'dead-sea-mask', name: 'Dead Sea Mineral Body Mask', duration: '45 Mins', category: 'Body Masks & Wraps', desc: 'Mineral-rich Dead Sea mud extracting deep toxins, clearing impurities, and tightening slackened skin.' },
+  { id: 'coffee-mask', name: 'Coffee Body Mask', duration: '45 Mins', category: 'Body Masks & Wraps', desc: 'Energizing caffeine wrap stimulating micro-circulation, toning tissues, and smoothing cellulite.' },
+  { id: 'lavender-clay-mask', name: 'Lavender Clay Body Mask', duration: '45 Mins', category: 'Body Masks & Wraps', desc: 'Kaolin clay infused with French lavender oil to detoxify impurities and quiet the nervous system.' },
+  { id: 'almond-milk-mask', name: 'Almond Milk Body Mask', duration: '45 Mins', category: 'Body Masks & Wraps', desc: 'Almond milk proteins and plant lipids deeply replenishing dry skin and repairing dermal barriers.' },
+  { id: 'body-polish-wrap', name: 'Bali Coconut Body Polish & Wrap', duration: '60 / 90 Mins', category: 'Body Masks & Wraps', desc: 'Balinese coconut cream polish and herbal cocoon wrap sealing in hydration for full-body radiance.' },
+
+  // 2026 HYDROTHERAPY & REJUVENATING BATHS
+  { id: 'steam-bath', name: 'Steam Bath', duration: '30 / 45 Mins', category: 'Hydro Therapy Baths', desc: 'Therapeutic herbal steam opening pores, cleansing dirt, and dilating blood vessels to lower tension.' },
+  { id: 'jacuzzi-therapy', name: 'Jacuzzi Hydro-Jet Therapy', duration: '45 Mins', category: 'Hydro Therapy Baths', desc: 'High-pressure thermal hydro-massage jets easing knotted muscles and restoring buoyant serenity.' },
+  { id: 'flower-bath', name: 'Fruits & Flowers Bath Tub', duration: '45 / 60 Mins', category: 'Hydro Therapy Baths', desc: 'Iconic Balinese tub floating with thousands of fresh flower petals and aromatherapy botanical oils.' },
+
+  // 2026 WELLNESS SPA FACIALS
+  { id: 'bali-aroma-facial', name: 'Bali Aroma Facial', duration: '60 Mins', category: 'Skincare Rituals', desc: 'Custom essential botanical oil blends relieving facial tension, unblocking pores, and restoring glow.' },
+  { id: 'red-wine-facial', name: 'Red Wine Facial', duration: '60 Mins', category: 'Skincare Rituals', desc: 'Natural red wine polyphenols fighting wrinkles, suppressing acne, and imparting luminous radiance.' },
+  { id: 'thai-whitening-facial', name: 'Thai Whitening Spa Facial', duration: '60 Mins', category: 'Skincare Rituals', desc: 'Specialized Thai brightening ritual fading dark spots, sun pigmentation, and clearing blackheads.' },
+
+  // 2026 SPA PEDICURES
+  { id: 'spa-pedicure', name: 'Spa Pedicure', duration: '60 Mins', category: 'Reflexology & Feet', desc: 'Complete classic pedicure with warm aromatic soak, cuticle grooming, heel buffing, and foot massage.' },
+  { id: 'crystal-spa-pedicure', name: 'Crystal Spa Pedicure', duration: '60 Mins', category: 'Reflexology & Feet', desc: 'Sensory heat-retaining crystal jelly foot bath melting muscle fatigue, followed by crystal polish scrub.' },
+  { id: 'citrus-spa-pedicure', name: 'Citrus Spa Pedicure', duration: '60 Mins', category: 'Reflexology & Feet', desc: 'Refreshing foot ceremony with fresh citrus fruit slices and Vitamin C to brighten and revive feet.' },
+
+  // SPECIALTY HEALING
+  { id: 'healing-therapies', name: 'Healing Therapies (Abhyangam & Sound)', duration: '90 / 120 Mins', category: 'Holistic Mind', desc: 'Abhyangam, Herbal Powder, and Tibetan Healing Sound Therapy.' }
 ];
 
 const timeSlots = [

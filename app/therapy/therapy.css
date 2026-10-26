@@ -436,6 +436,19 @@
     border-color: rgba(184, 134, 11, 0.28);
 }
 
+.dat-price-pill {
+    background: rgba(212, 175, 55, 0.22) !important;
+    color: #ffd700 !important;
+    border: 1px solid rgba(212, 175, 55, 0.5) !important;
+    font-weight: 700 !important;
+}
+
+[data-theme="light"] .dat-price-pill {
+    background: rgba(184, 134, 11, 0.16) !important;
+    color: #8c4a16 !important;
+    border-color: rgba(184, 134, 11, 0.45) !important;
+}
+
 .dat-title {
     font-family: var(--font-heading), 'Cormorant Garamond', serif !important;
     font-size: 1.65rem !important;
