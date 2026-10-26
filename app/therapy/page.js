@@ -5,8 +5,6 @@ import './therapy.css';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
-const BASE = 'https://diosabalispa.in/wp-content/uploads/2025/07/';
-
 // Elegant Luxury SVG Icons
 const ClockIcon = () => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', verticalAlign: '-1px', marginRight: '5px' }}>
@@ -76,7 +74,7 @@ const treatments = [
     "pressure": "Firm",
     "title": "Traditional Balinese Massage",
     "desc": "A holistic full-body deep tissue treatment blending acupressure, skin rolling, friction, flicking, and rhythmic percussion. Relieves persistent muscle pain, addresses sleep disorders, boosts blood circulation, promotes skin health, and elevates natural immunity.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/ea.jpg"
+    "img": "/assets/balinese_touch_ai.png"
   },
   {
     "id": 2,
@@ -87,7 +85,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Bali Aroma Massage",
     "desc": "A beloved multi-purpose aromatherapy therapy using exotic botanical essential oils absorbed deeply into the dermis. Delivers profound muscular relaxation, stress reduction, pain alleviation, blood stimulation, and full-body detoxification.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/t1.webp"
+    "img": "/assets/treatments/bali_aroma_facial.jpg"
   },
   {
     "id": 3,
@@ -98,7 +96,7 @@ const treatments = [
     "pressure": "Deep",
     "title": "Bali Thai Massage",
     "desc": "Ancient oriental bodywork combining assisted yoga-like stretching, passive joint mobilization, and rhythmic acupressure. Dramatically increases joint range of motion, alleviates chronic lower back pain, eases migraine tension, and resets nervous energy.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/caption-e1753253128451.jpg"
+    "img": "/assets/therapy_body_stretches.jpg"
   },
   {
     "id": 4,
@@ -109,7 +107,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Four Hands Massage",
     "desc": "Two master therapists working in seamless synchronized choreography on one client. Like experiencing two full-body therapies at once, this synchronized ritual swiftly removes energetic blockages, eases tension headaches, decreases swelling, and restores deep balance.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/a6b4261509788cc843fafcac56d38c51.jpg"
+    "img": "/assets/master_therapists_ai.png"
   },
   {
     "id": 5,
@@ -120,7 +118,7 @@ const treatments = [
     "pressure": "Deep",
     "title": "Deep Tissue Massage",
     "desc": "Intense focused manipulation reaching deep muscle fibers and connective fascia. Targets chronic muscle stiffness, breaks up stubborn scar tissue, lowers heart rate and blood pressure, and rehabilitates injured muscular groups.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/8fee7d519bb21d9352817f6de95fcc94.jpg"
+    "img": "/assets/massage_treatment.png"
   },
   {
     "id": 6,
@@ -131,7 +129,7 @@ const treatments = [
     "pressure": "Firm",
     "title": "Trigger Point Massage",
     "desc": "Precision pressure therapy focused on hypersensitive taut bands and knots within muscle tissue that radiate pain across the body. Effectively deactivates trigger points to relieve referred pain, improve posture, and regain full physical flexibility.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/a1d7e262bc47670ae69b273646ce2e13.jpg"
+    "img": "/assets/therapy_arms_back.jpg"
   },
   {
     "id": 7,
@@ -142,7 +140,7 @@ const treatments = [
     "pressure": "Light to Medium",
     "title": "Swedish Massage",
     "desc": "Classic therapeutic manual bodywork emphasizing long gliding strokes (effleurage), kneading (petrissage), and friction toward the heart. Encourages healthy blood flow, flushes metabolic wastes, aids pain management, and fosters peaceful relaxation.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/532e79679274fb11a8bd80f4d4b2e2fb.jpg"
+    "img": "/assets/massage_treatment.png"
   },
   {
     "id": 8,
@@ -153,7 +151,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Hot Oil Massage",
     "desc": "Specially formulated heated botanical oils poured and stroked over the body to pacify internal bioenergies and release deep tissue toxins. Tones muscles, awakens creative mental clarity, restores stamina, and ensures deeply restful sleep.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/a7ab8bb31ebfe25f3fb4870906c320a9.jpg"
+    "img": "/assets/product_oil.png"
   },
   {
     "id": 9,
@@ -164,7 +162,7 @@ const treatments = [
     "pressure": "Medium to Firm",
     "title": "Hot Stone Massage",
     "desc": "Smooth, heated volcanic basalt stones glide with herbal oils over vital energy meridians. Penetrating warmth relaxes stiff muscle fibers, melts persistent stress and anxiety, enhances tissue circulation, and strengthens the immune system.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/713a2b3f2852be21624a0b9d4c9b4655.jpg"
+    "img": "/assets/hero_bg.png"
   },
   {
     "id": 10,
@@ -175,7 +173,7 @@ const treatments = [
     "pressure": "Firm to Deep",
     "title": "Sports Massage",
     "desc": "Specialized soft tissue therapy for athletes and active individuals. Corrects imbalances from repetitive strenuous training, reduces muscle spasms and neurological excitability, eliminates lactic acid, and dramatically accelerates recovery.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/39e5907c2d7b25017b695c6ddfdb14c9.jpg"
+    "img": "/assets/therapy_body_stretches.jpg"
   },
   {
     "id": 11,
@@ -186,7 +184,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Chocolate Massage",
     "desc": "Indulgent comprehensive therapy utilizing real antioxidant-rich chocolate oil. Pure cocoa stimulates brain endorphins to combat anxiety and stress while the velvety texture intensely hydrates, stimulates micro-circulation, and repairs tired skin.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/c8d3863df8b76bce280f5f33b20e546a.jpg"
+    "img": "/assets/body_wrap_treatment.jpg"
   },
   {
     "id": 12,
@@ -197,7 +195,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Couple Massage",
     "desc": "A tranquil shared journey for two in our private luxury couple suite. Creates intimacy, resets emotional serenity, and lowers mutual tension as two experienced therapists provide synchronized relaxation side by side.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/5564b5f29edb5ad1e8edf0ba485c8088.jpg"
+    "img": "/assets/serene_sanctuary_ai.png"
   },
   {
     "id": 13,
@@ -208,7 +206,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Bali Ayurvedic Massage",
     "desc": "Traditional Ayurvedic herbal oils infused with organic botanical extracts to stimulate vital marma points. Cleanses and revitalizes internal prana life force, calms the central nervous system, and treats rough cracked skin.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/ee7e103328cef3b3bafdeff65f2aaf1c.jpg"
+    "img": "/assets/organic_botanicals_ai.png"
   },
   {
     "id": 14,
@@ -219,7 +217,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Cream Massage",
     "desc": "Nourishing, relaxing treatment formulated with gentle natural moisturizing creams. Restores moisture to dehydrated, rough skin areas, combats premature aging with gentle effleurage, and leaves an ultra-silky, smooth finish.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/9f2e3a87c1c095568417d7c66aa352d1.jpg"
+    "img": "/assets/treatments/almond_milk_wrap.jpg"
   },
   {
     "id": 15,
@@ -230,7 +228,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Cow's Ghee Massage",
     "desc": "Pure organic cow's ghee enriched with omega fatty acids and antioxidants. Neutralizes harmful free radicals, hydrates dry or weather-damaged tissues, softens skin texture, and provides a timeless healthy natural luster.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/Ghee-7th.avif"
+    "img": "/assets/product_oil.png"
   },
   {
     "id": 16,
@@ -241,7 +239,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Almond Oil Massage",
     "desc": "Fast-absorbing cold-pressed sweet almond oil rich in Vitamin E and magnesium. Delivers intense cellular hydration, fades scars and stretch marks, combats environmental skin aging, and soothes sensitive skin redness.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/6fdde8cfa66e7b94ec57c85b7636dd49.jpg"
+    "img": "/assets/product_oil.png"
   },
   {
     "id": 17,
@@ -252,7 +250,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Coconut Oil Massage",
     "desc": "Natural virgin coconut oil rich in nourishing medium-chain fatty acids that form a protective barrier against dryness. Restores elastic resilience, prevents bacterial skin irritations, and softens dry, cracked elbows and knees.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/130e379bb2e2c1b84627580513bd2e0a.jpg"
+    "img": "/assets/treatments/almond_milk_wrap.jpg"
   },
   {
     "id": 18,
@@ -263,7 +261,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Sesame Oil Massage",
     "desc": "Ancient Ayurvedic sesame seed oil renowned for cooling excess body heat and detoxifying tissues. Packed with natural antioxidants, antimicrobial properties, and cell-repairing minerals that shield skin and prevent scaly textures.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/83cb880d5505782657397c4a31ecb396.jpg"
+    "img": "/assets/product_oil.png"
   },
   {
     "id": 19,
@@ -274,7 +272,7 @@ const treatments = [
     "pressure": "Firm",
     "title": "Mustard Oil Massage",
     "desc": "Traditional thermal massage using pure warm mustard oil rich in Omega-3 fatty acids and allyl isothiocyanate. Retains deep internal heat, eases arthritic joint stiffness, relieves respiratory congestion, and boosts peripheral circulation.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/3e28bdd794cf50d71c71884f68925f38.jpg"
+    "img": "/assets/product_oil.png"
   },
   {
     "id": 20,
@@ -285,7 +283,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Head & Shoulder Massage",
     "desc": "Targeted revitalizing therapy focusing on scalp, neck, and shoulder tension lines. Cool fingertips and warm aromatic oils dissolve mental fatigue, reduce migraines, relieve screen eye strain, and boost mood.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/f8f10338fbfc0ed0610bc69854ee098f.jpg"
+    "img": "/assets/therapy_shoulders_back.jpg"
   },
   {
     "id": 21,
@@ -296,7 +294,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Face & Neck Massage",
     "desc": "Delicate lymphatic drainage massage across the jawline, cheeks, and neck. Unblocks stagnant lymph, diminishes fine wrinkles, tones facial muscles, and kicks out impurities for a brighter, sculpted glow.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/0269e80cfcde2385fe8b62a8409c1cab.jpg"
+    "img": "/assets/facial_treatment.png"
   },
   {
     "id": 22,
@@ -307,7 +305,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Full Hand's Massage",
     "desc": "Dedicated hand and forearm treatment using friction, trigger-pointing, and acupressure. Restores wrist and finger mobility, relieves repetitive typing strain, and delivers nourishing botanical balm to overworked tendons.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/d6f687360e3fbc52814588d48d9b6eab.jpg"
+    "img": "/assets/therapy_arms_back.jpg"
   },
   {
     "id": 23,
@@ -318,7 +316,7 @@ const treatments = [
     "pressure": "Firm",
     "title": "Full Back Massage",
     "desc": "Deep focused relief from the lumbar spine up to the cervical vertebrae. Releases knotting caused by long sitting hours, corrects postural misalignment, eases tension headaches, and alleviates spinal stiffness.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/34ee4e8034437873ea656fd427a6b860-2.jpg"
+    "img": "/assets/therapy_arms_back.jpg"
   },
   {
     "id": 24,
@@ -329,7 +327,7 @@ const treatments = [
     "pressure": "Firm",
     "title": "Foot & Leg Massage",
     "desc": "Comprehensive lower-limb therapy with rhythmic stretching, compression, and effleurage from toes to thighs. Stimulates venous blood return, drains accumulated edema, and prevents athletic tendon injuries.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/9c3c12f8d53d3e8624ad11ec90ec7c8c-1.jpg"
+    "img": "/assets/therapy_leg_foot.jpg"
   },
   {
     "id": 25,
@@ -340,7 +338,7 @@ const treatments = [
     "pressure": "Medium to Firm",
     "title": "Foot Reflexology",
     "desc": "Authentic pressure point reflexology mapping the sole of the foot to vital organs and bodily systems. Calms nervous overstimulation, alleviates bodily pain, reduces foot swelling, and promotes deep sound sleep.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/19f0fb00b13e67e435731ee5847f3ba3-1.jpg"
+    "img": "/assets/therapy_reflexology.jpg"
   },
   {
     "id": 26,
@@ -351,7 +349,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Hand Reflexology",
     "desc": "Targeted pressure on key reflex zones across palms and fingers correlating to spine, sinus, and cranial points. Relieves shoulder tension, eases sinus pressure, and restores harmonic bio-energies.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/0d34ee49bfd7e6a108cb1f978dc7b83b-6.jpg"
+    "img": "/assets/therapy_arms_back.jpg"
   },
   {
     "id": 27,
@@ -362,7 +360,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Shiatsu Massage",
     "desc": "Traditional Japanese acupressure using rhythmic finger and palm pressure along meridian lines. Restores unimpeded Qi energy flow, improves bowel regularity, relieves fatigue, and lifts mood.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/70a30a7c95949691bc34abd483d689f2.jpg"
+    "img": "/assets/massage_treatment.png"
   },
   {
     "id": 28,
@@ -373,7 +371,7 @@ const treatments = [
     "pressure": "Firm",
     "title": "Bamboo Massage",
     "desc": "Smooth heated organic bamboo stalks rolled, kneaded, and pressed across muscle groups. Elongates tight fascia, eases deep muscular knots, promotes lymphatic flushing, and restores fluid joint flexibility.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/ab1ee6256cfba20954cf52a499a094b2.jpg"
+    "img": "/assets/balinese_touch_ai.png"
   },
   {
     "id": 29,
@@ -384,7 +382,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Herbal Potli Massage",
     "desc": "Warm steamed muslin poultice bags packed with traditional Ayurvedic healing herbs stamped rhythmically along the body. Relieves inflammation, eases arthritis, dispels muscular stiffness, and nourishes skin.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/489d82b6234fd0db30994966b7367c54.jpg"
+    "img": "/assets/organic_botanicals_ai.png"
   },
   {
     "id": 30,
@@ -395,7 +393,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Candlelight Massage",
     "desc": "Pure soy and botanical warm candle oil drizzled over the body in a dimmed candlelit sanctuary. Calms frantic thoughts, deepens restorative breathing, and blankets the body in silky warmth.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/afa5eed5ac7f258999b24aff33ec4dcd.jpg"
+    "img": "/assets/serene_sanctuary_ai.png"
   },
   {
     "id": 31,
@@ -406,7 +404,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Pregnancy Massage",
     "desc": "Gentle specialized prenatal therapy adapted for the expectant mother's comfort. Safely relieves lower back strain, reduces leg swelling, eases joint fatigue, and calms prenatal anxiety and insomnia.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/d84ade4d4f8d0f844ca5dad9849861df.jpg"
+    "img": "/assets/serene_sanctuary_ai.png"
   },
   {
     "id": 32,
@@ -417,7 +415,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Tai-chi Massage",
     "desc": "Barefoot and hand rhythmic bodywork inspired by Tai Chi flow. Balances postural equilibrium, relieves chronic tension, stimulates deep relaxation, and encourages emotional harmony.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/48882ebcc4bf0c10e56db981f0790401.jpg"
+    "img": "/assets/therapy_body_stretches.jpg"
   },
   {
     "id": 33,
@@ -428,7 +426,7 @@ const treatments = [
     "pressure": "Soft",
     "title": "Soft Touch Massage",
     "desc": "Featherlight rhythmic fingertip contact that soothes the sensory nervous system. Releases energetic blockages, reduces stress hormones, and guides the mind into serene meditative slumber.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/4f6fa076117c2b4be43e4444a99d868c.jpg"
+    "img": "/assets/balinese_touch_ai.png"
   },
   {
     "id": 34,
@@ -439,7 +437,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Honey Massage",
     "desc": "Natural wild forest honey stroked and patted over the skin to stimulate micro-circulation and dermal healing. Draws out toxins, tones skin, and infuses natural antibacterial nutrients.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/e3bee3deb3b5e8e8852482601818d5cf.jpg"
+    "img": "/assets/treatments/sugar_honey_scrub.jpg"
   },
   {
     "id": 35,
@@ -450,7 +448,7 @@ const treatments = [
     "pressure": "Gentle",
     "title": "Relaxation Massage",
     "desc": "Gentle, flowing rhythmic strokes on soft tissues designed to quiet neural activity. Lowers heart rate, eases muscle tightness, and leaves you floating in peaceful lightness.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/7c6c7766997cc000b9e18765c36c5354.jpg"
+    "img": "/assets/serene_sanctuary_ai.png"
   },
   {
     "id": 36,
@@ -461,7 +459,7 @@ const treatments = [
     "pressure": "Firm",
     "title": "Dry Massage",
     "desc": "Non-oil bodywork incorporating deep compression, rhythmic thumb presses, and yoga-based stretching. Stimulates internal circulation, relieves tension headaches, and promotes body alignment.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/fb8f02d3bddc19264b1218484e3fbc10.jpg"
+    "img": "/assets/therapy_body_stretches.jpg"
   },
   {
     "id": 37,
@@ -472,7 +470,7 @@ const treatments = [
     "pressure": "Light",
     "title": "Olive Oil Massage",
     "desc": "Pure extra-virgin olive oil rich in Vitamin E, oleic acids, and antioxidants. Slowly absorbed to lock in deep hydration, ease muscular tightness, and leave skin supple and glowing.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/23e7c690d7db70ca4a3b3b33bc8caf44.jpg"
+    "img": "/assets/product_oil.png"
   },
   {
     "id": 38,
@@ -483,7 +481,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Chest & Abdomen Massage",
     "desc": "Gentle kneading, skin rolling, and acupressure targeting abdominal and diaphragm tension. Aids sluggish digestion, strengthens posture, and releases internal emotional tightness.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/4046309770822a9e6e450a225ed05f3c-1.jpg"
+    "img": "/assets/massage_treatment.png"
   },
   {
     "id": 39,
@@ -714,7 +712,7 @@ const treatments = [
     "pressure": "Medium",
     "title": "Healing Therapies (Abhyangam & Sound)",
     "desc": "Sacred restorative therapy combining ancient Abhyangam rhythmic warm herbal oil strokes, herbal powder Udvarthana, and harmonic Tibetan singing bowls to re-align internal bio-rhythms.",
-    "img": "https://diosabalispa.in/wp-content/uploads/2025/07/526e4b3ecafaa18612d14b5fa918fd97.jpg"
+    "img": "/assets/flower_bath_ai.png"
   },
   {
     "id": 60,

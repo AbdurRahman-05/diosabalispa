@@ -9,7 +9,7 @@ const senses = [
     sense: 'SEE',
     title: 'Warm Light & Natural Stone',
     desc: 'Soft amber lamp pools illuminating rough, hand-carved stone walls and deep shadows designed to rest tired eyes and quiet the mind.',
-    image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-1.jpg'
+    image: '/assets/hero_bg.png'
   },
   {
     id: 'feel',
@@ -33,7 +33,7 @@ const senses = [
     sense: 'HEAR',
     title: 'Underground Stillness',
     desc: 'Subtle soundscapes of trickling hydro-water, Tibetan healing bowls, and complete isolation from street noise and digital distraction.',
-    image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-18.jpg'
+    image: '/assets/flower_bath_ai.png'
   },
   {
     id: 'rest',

@@ -6,23 +6,23 @@ import { useState, useEffect } from 'react';
 import DriftWall from '../components/DriftWall';
 
 const galleryItems = [
-  { id: 1, title: 'Natural Rock Architecture & Stone Wall', category: 'architecture', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-1.jpg', tall: true },
-  { id: 2, title: 'Botanical Oils & Handcrafted Timber', category: 'botanicals', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-2.jpg' },
-  { id: 3, title: 'Subterranean Flower Soak Hydro Tub', category: 'ambience', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-3.jpg', wide: true },
-  { id: 4, title: 'Botanical Skincare Facial Treatment', category: 'treatments', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-4.jpg' },
-  { id: 5, title: 'Volcanic Basalt Heated Stones', category: 'botanicals', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-6.jpg' },
-  { id: 6, title: 'Balinese Pressure Bodywork Suite', category: 'treatments', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-8.jpg', tall: true },
-  { id: 7, title: 'Double Cave Sanctuary Suite', category: 'ambience', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-9.jpg', wide: true },
-  { id: 8, title: 'Sanctuary Lounge & Warm Lamp Tea Ritual', category: 'ambience', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-10-e1752860173718.jpg', fullWidth: true },
-  { id: 9, title: 'Pedicure & Foot Care Warm Stone Nook', category: 'treatments', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-11.jpg' },
-  { id: 10, title: 'Organic Herbal Scrubs & Raw Spices', category: 'botanicals', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-12.jpg' },
-  { id: 11, title: 'Thai Whitening Spa Facial Technique', category: 'treatments', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-13.jpg' },
-  { id: 12, title: 'Private Hydro Flower Soak Tub', category: 'ambience', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-14.jpg', wide: true },
-  { id: 13, title: 'Four Hands Synchronized Body Ritual', category: 'treatments', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-15.jpg' },
-  { id: 14, title: 'Cold-Pressed Essential Oil Elixirs', category: 'botanicals', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-16.jpg' },
-  { id: 15, title: 'Bamboo Sticks & Organic Oils', category: 'treatments', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-17.jpg' },
-  { id: 16, title: 'Relaxation & Sound Meditation Corridor', category: 'ambience', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-18.jpg', tall: true },
-  { id: 17, title: 'Indo-Bali Cultural Stone & Wood Ambience', category: 'architecture', img: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-19.jpg', fullWidth: true }
+  { id: 1, title: 'Natural Rock Architecture & Stone Wall', category: 'architecture', img: '/assets/hero_bg.png', tall: true },
+  { id: 2, title: 'Botanical Oils & Handcrafted Timber', category: 'botanicals', img: '/assets/product_oil.png' },
+  { id: 3, title: 'Subterranean Flower Soak Hydro Tub', category: 'ambience', img: '/assets/treatments/flower_bath.jpg', wide: true },
+  { id: 4, title: 'Botanical Skincare Facial Treatment', category: 'treatments', img: '/assets/facial_treatment.png' },
+  { id: 5, title: 'Volcanic Basalt Heated Stones', category: 'botanicals', img: '/assets/massage_treatment.png' },
+  { id: 6, title: 'Balinese Pressure Bodywork Suite', category: 'treatments', img: '/assets/balinese_touch_ai.png', tall: true },
+  { id: 7, title: 'Double Cave Sanctuary Suite', category: 'ambience', img: '/assets/serene_sanctuary_ai.png', wide: true },
+  { id: 8, title: 'Sanctuary Lounge & Warm Lamp Tea Ritual', category: 'ambience', img: '/assets/reflexology_franchise_lounge.jpg', fullWidth: true },
+  { id: 9, title: 'Pedicure & Foot Care Warm Stone Nook', category: 'treatments', img: '/assets/treatments/citrus_pedicure.jpg' },
+  { id: 10, title: 'Organic Herbal Scrubs & Raw Spices', category: 'botanicals', img: '/assets/treatments/sugar_honey_scrub.jpg' },
+  { id: 11, title: 'Thai Whitening Spa Facial Technique', category: 'treatments', img: '/assets/treatments/thai_whitening_facial.jpg' },
+  { id: 12, title: 'Private Hydro Flower Soak Tub', category: 'ambience', img: '/assets/flower_bath_ai.png', wide: true },
+  { id: 13, title: 'Four Hands Synchronized Body Ritual', category: 'treatments', img: '/assets/master_therapists_ai.png' },
+  { id: 14, title: 'Cold-Pressed Essential Oil Elixirs', category: 'botanicals', img: '/assets/organic_botanicals_ai.png' },
+  { id: 15, title: 'Bamboo Sticks & Organic Oils', category: 'treatments', img: '/assets/therapy_body_stretches.jpg' },
+  { id: 16, title: 'Relaxation & Sound Meditation Corridor', category: 'ambience', img: '/assets/serene_sanctuary_ai.png', tall: true },
+  { id: 17, title: 'Indo-Bali Cultural Stone & Wood Ambience', category: 'architecture', img: '/assets/hero_bg.png', fullWidth: true }
 ];
 
 export default function GalleryPage() {

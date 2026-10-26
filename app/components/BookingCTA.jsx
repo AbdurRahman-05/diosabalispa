@@ -22,7 +22,7 @@ export default function BookingCTA() {
         }}
       >
         <img 
-          src="https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-9.jpg" 
+          src="/assets/serene_sanctuary_ai.png" 
           alt="Diosa Spa Underground Sanctuary Suite" 
           style={{
             width: '100%',

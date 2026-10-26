@@ -7,7 +7,7 @@ export default function StoneWoodLight() {
       title: 'STONE',
       subtitle: 'Natural Rock Architecture',
       desc: 'Carved from dark volcanic basalt and irregular natural rock walls, creating a subterranean sanctuary that absorbs outside vibrations and grounds the physical body.',
-      image: 'https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-6.jpg',
+      image: '/assets/hero_bg.png',
       tag: 'GROUNDING & SILENCE'
     },
     {

@@ -189,7 +189,7 @@ export default function IntroSanctuary() {
               }}
             >
               <img 
-                src="https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-1.jpg" 
+                src="/assets/hero_bg.png" 
                 alt="Diosa Spa Stone & Wood Sanctuary Interior" 
                 style={{
                   width: '100%',

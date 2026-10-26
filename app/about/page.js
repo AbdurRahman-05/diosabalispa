@@ -95,7 +95,7 @@ export default function AboutPage() {
             <div className="dbs-about-visual">
               <div className="dbs-img-stack">
                 <img 
-                  src="https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-1.jpg" 
+                  src="/assets/hero_bg.png" 
                   alt="Diosa Spa Stone Sanctuary Interior" 
                   className="dbs-img-main" 
                 />
@@ -185,7 +185,7 @@ export default function AboutPage() {
               </div>
 
               <div className="dbs-why-you-img-wrap" style={{ borderRadius: '20px', overflow: 'hidden', border: '1px solid rgba(212,175,55,0.3)', boxShadow: '0 20px 50px rgba(0,0,0,0.8)' }}>
-                <img src="https://diosabalispa.in/wp-content/uploads/2025/07/Diosa-9.jpg" alt="Diosa Bali Spa Sanctuary Suite" className="dbs-why-you-img" style={{ width: '100%', display: 'block' }} />
+                <img src="/assets/serene_sanctuary_ai.png" alt="Diosa Bali Spa Sanctuary Suite" className="dbs-why-you-img" style={{ width: '100%', display: 'block' }} />
               </div>
             </div>
 
