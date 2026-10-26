@@ -293,8 +293,8 @@ export default function FootReflexologyPage() {
 
       {/* SECTION 3: MEMBERSHIP PACKAGES */}
       <section className="membership-section">
-        <div className="container membership-container">
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 40px auto' }}>
+        <div className="container membership-container reflex-wide-container">
+          <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 40px auto' }}>
             <span className="section-tagline" style={{ color: '#d97706' }}>EXCLUSIVE VALUE PASS</span>
             <h2 className="section-title" style={{ fontSize: 'clamp(2.2rem, 4vw, 3.4rem)' }}>
               Membership Packages
@@ -309,7 +309,7 @@ export default function FootReflexologyPage() {
             <div className="membership-table-title">
               MEMBERSHIP PACKAGES
             </div>
-            <div style={{ overflowX: 'auto' }}>
+            <div className="table-wrapper-seamless">
               <table className="membership-table">
                 <thead>
                   <tr>
@@ -373,7 +373,7 @@ export default function FootReflexologyPage() {
 
       {/* SECTION 4: FRANCHISE OPPORTUNITY PROGRAM */}
       <section id="franchise-section" className="franchise-section">
-        <div className="container">
+        <div className="container franchise-container reflex-wide-container">
 
           {/* Header Bar matching Brochure Style */}
           <div className="therapies-header-bar">
@@ -433,15 +433,15 @@ export default function FootReflexologyPage() {
             <div className="franchise-table-title">
               FRANCHISE FORMAT &amp; RETURN ON INVESTMENT
             </div>
-            <div style={{ overflowX: 'auto' }}>
+            <div className="table-wrapper-seamless">
               <table className="franchise-table">
                 <thead>
                   <tr>
-                    <th>FRANCHISE FORMAT</th>
-                    <th>SPACE &amp; CAPACITY</th>
-                    <th>SETUP CAPEX</th>
-                    <th>EST. MONTHLY REVENUE</th>
-                    <th>EST. PAYBACK</th>
+                    <th className="franchise-th-format">FRANCHISE FORMAT</th>
+                    <th className="franchise-th-space">SPACE &amp; CAPACITY</th>
+                    <th className="franchise-th-capex">SETUP CAPEX</th>
+                    <th className="franchise-th-revenue">EST. MONTHLY REVENUE</th>
+                    <th className="franchise-th-payback">EST. PAYBACK</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -449,15 +449,17 @@ export default function FootReflexologyPage() {
                     <tr key={idx}>
                       <td className="franchise-model-cell">
                         <div>{m.name}</div>
-                        <small style={{ color: '#a8a090', fontSize: '0.78rem', fontWeight: 400 }}>{m.tier}</small>
+                        <small>{m.tier}</small>
                       </td>
-                      <td>{m.space}</td>
+                      <td className="franchise-space-cell">{m.space}</td>
                       <td className="franchise-capex-cell">{m.investment}</td>
                       <td className="franchise-revenue-cell">
-                        <span>{m.monthlyRevenue}</span>
-                        {m.featured && (
-                          <span className="membership-bonus-badge">TOP ROI</span>
-                        )}
+                        <div className="franchise-revenue-inner">
+                          <span>{m.monthlyRevenue}</span>
+                          {m.featured && (
+                            <span className="membership-bonus-badge">TOP ROI</span>
+                          )}
+                        </div>
                       </td>
                       <td className="franchise-payback-cell">{m.payback}</td>
                     </tr>
