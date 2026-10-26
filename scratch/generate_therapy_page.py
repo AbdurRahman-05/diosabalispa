@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-import json
-
 BASE = "https://diosabalispa.in/wp-content/uploads/2025/07/"
 
-# Full list of 60 services from Diosa Menu Card Old and New 2026
+# Full list of 60 services from Diosa Menu Card 2026 with new luxury bespoke AI photography
 treatments = [
     # --- MASSAGES (PDF Pages 4 - 12) ---
     {
@@ -254,7 +252,6 @@ treatments = [
         "goal": "pain",
         "duration": "45 / 60 Mins",
         "price": "₹2,200 / ₹2,700",
-        "price": "₹2,200 / ₹2,700",
         "pressure": "Firm",
         "title": "Full Back Massage",
         "desc": "Deep focused relief from the lumbar spine up to the cervical vertebrae. Releases knotting caused by long sitting hours, corrects postural misalignment, eases tension headaches, and alleviates spinal stiffness.",
@@ -426,7 +423,7 @@ treatments = [
         "img": BASE + "4046309770822a9e6e450a225ed05f3c-1.jpg"
     },
 
-    # --- BODY SCRUBS (PDF Page 13) ---
+    # --- BODY SCRUBS (PDF Page 13) - With Bespoke Luxury Photography ---
     {
         "id": 39,
         "category": "scrub",
@@ -436,7 +433,7 @@ treatments = [
         "pressure": "Gentle Polish",
         "title": "Sugar & Honey Body Scrub",
         "desc": "Natural cane sugar crystals blended with golden forest honey vigorously rubbed and massaged across the body. Exfoliates dead skin cells, clears blemishes, and locks in natural humectants for velvety, glowing skin.",
-        "img": "/assets/treatments/body_scrub.jpg"
+        "img": "/assets/treatments/sugar_honey_scrub.jpg"
     },
     {
         "id": 40,
@@ -447,7 +444,7 @@ treatments = [
         "pressure": "Gentle Polish",
         "title": "Rice & Oats Body Scrub",
         "desc": "Organic Balinese ground rice powder and finely milled colloidal oats. Gently sloughs away impurities while calming sensitive or irritated skin, leaving your body touchably soft and balanced.",
-        "img": BASE + "a7ab8bb31ebfe25f3fb4870906c320a9.jpg"
+        "img": "/assets/treatments/sugar_honey_scrub.jpg"
     },
     {
         "id": 41,
@@ -458,7 +455,7 @@ treatments = [
         "pressure": "Medium Polish",
         "title": "Coffee & Salt Body Scrub",
         "desc": "A vigorous scrub combining freshly roasted coffee grounds and mineral sea salts. Stimulates sluggish lymphatic circulation, combats stubborn cellulite, flushes toxins, and leaves skin energized.",
-        "img": BASE + "8fee7d519bb21d9352817f6de95fcc94.jpg"
+        "img": "/assets/treatments/coffee_scrub.jpg"
     },
     {
         "id": 42,
@@ -469,7 +466,7 @@ treatments = [
         "pressure": "Gentle Polish",
         "title": "Brown Sugar & Coconut Butter Body Scrub",
         "desc": "Unrefined caramel brown sugar infused with decadent raw coconut butter. Delivers intense moisture replenishment as it exfoliates, melting into dry areas to eliminate flakiness and renew luminosity.",
-        "img": "/assets/treatments/body_scrub.jpg"
+        "img": "/assets/treatments/sugar_honey_scrub.jpg"
     },
     {
         "id": 43,
@@ -480,7 +477,7 @@ treatments = [
         "pressure": "Gentle Polish",
         "title": "Raspberry Body Scrub",
         "desc": "Exotic fruit polish packed with real raspberry seed extract, natural antioxidants, and Vitamin C. Polishes rough skin texture, defends against environmental aging, and imparts a refreshing berry glow.",
-        "img": BASE + "c8d3863df8b76bce280f5f33b20e546a.jpg"
+        "img": "/assets/treatments/berry_scrub.jpg"
     },
     {
         "id": 44,
@@ -491,10 +488,10 @@ treatments = [
         "pressure": "Gentle Polish",
         "title": "Blueberry Body Scrub",
         "desc": "Revitalizing botanical scrub enriched with antioxidant blueberry flavonoids and gentle fruit AHAs. Removes dull surface layers, refines pores, and boosts micro-circulation for firm, bouncy skin.",
-        "img": "/assets/treatments/body_scrub.jpg"
+        "img": "/assets/treatments/berry_scrub.jpg"
     },
 
-    # --- BODY MASKS (PDF Page 14) ---
+    # --- BODY MASKS (PDF Page 14) - With Bespoke Luxury Photography ---
     {
         "id": 45,
         "category": "wrap",
@@ -504,7 +501,7 @@ treatments = [
         "pressure": "Cooling Wrap",
         "title": "Cucumber Body Mask",
         "desc": "Soothing, cooling botanical paste made from crisp fresh cucumber extract applied over the entire body. Quenches dehydrated skin, banishes breakouts, reduces redness, and restores bouncy, soft skin.",
-        "img": "/assets/treatments/body_mask.jpg"
+        "img": "/assets/treatments/cucumber_mask.jpg"
     },
     {
         "id": 46,
@@ -515,7 +512,7 @@ treatments = [
         "pressure": "Detox Wrap",
         "title": "Dead Sea Mineral Body Mask",
         "desc": "Authentic mineral-dense Dead Sea mud wrap infused with potassium and magnesium. Extracts deep cellular toxins, clears skin blemishes, refines pore structure, and leaves skin tightened and firmer.",
-        "img": "/assets/body_wrap_treatment.jpg"
+        "img": "/assets/treatments/dead_sea_mask.jpg"
     },
     {
         "id": 47,
@@ -526,7 +523,7 @@ treatments = [
         "pressure": "Firming Wrap",
         "title": "Coffee Body Mask",
         "desc": "Active caffeine-rich firming wrap that stimulates dermal micro-circulation and lymphatic drainage. Tones slackened tissue, tightens contours, and infuses cells with protective antioxidants.",
-        "img": "/assets/treatments/body_mask.jpg"
+        "img": "/assets/treatments/coffee_scrub.jpg"
     },
     {
         "id": 48,
@@ -537,7 +534,7 @@ treatments = [
         "pressure": "Calming Wrap",
         "title": "Lavender Clay Body Mask",
         "desc": "Fine therapeutic kaolin clay infused with French lavender essential oil. Detoxifies environmental impurities, smooths rough epidermis, relaxes nervous anxiety, and yields radiant, silky skin.",
-        "img": BASE + "3ef4fda83059431499c1a6994d70354e.jpg"
+        "img": "/assets/treatments/dead_sea_mask.jpg"
     },
     {
         "id": 49,
@@ -548,10 +545,10 @@ treatments = [
         "pressure": "Nourishing Wrap",
         "title": "Almond Milk Body Mask",
         "desc": "Ultra-rich conditioning cream wrap enriched with almond milk proteins and natural plant lipids. Deeply nourishes cracked skin, restores lipid barriers, and leaves skin wonderfully luminous.",
-        "img": "/assets/treatments/body_mask.jpg"
+        "img": "/assets/treatments/almond_milk_wrap.jpg"
     },
 
-    # --- REJUVENATING BATHS & HYDROTHERAPY (PDF Pages 15 & 16) ---
+    # --- REJUVENATING BATHS & HYDROTHERAPY (PDF Pages 15 & 16) - With Bespoke Luxury Photography ---
     {
         "id": 50,
         "category": "bath",
@@ -561,7 +558,7 @@ treatments = [
         "pressure": "Thermal Steam",
         "title": "Steam Bath",
         "desc": "Pure therapeutic herbal steam opening pores, cleansing deep dirt, and dilating blood vessels to improve systemic circulation. Eases respiratory bronchitis, lowers blood pressure, and relieves joint stiffness.",
-        "img": "/assets/treatments/steam_jacuzzi.jpg"
+        "img": "/assets/treatments/steam_bath.jpg"
     },
     {
         "id": 51,
@@ -572,7 +569,7 @@ treatments = [
         "pressure": "Hydro-Therapy",
         "title": "Jacuzzi Hydro-Jet Therapy",
         "desc": "Thermal immersion with pressurized swirling water jets targeting knotted muscle groups. Widens blood vessels to send nutrient-rich blood throughout your body, releasing tension in pure serenity.",
-        "img": "/assets/treatments/steam_jacuzzi.jpg"
+        "img": "/assets/treatments/jacuzzi.jpg"
     },
     {
         "id": 52,
@@ -586,7 +583,7 @@ treatments = [
         "img": "/assets/treatments/flower_bath.jpg"
     },
 
-    # --- WELLNESS SPA FACIALS (PDF Pages 17 & 18) ---
+    # --- WELLNESS SPA FACIALS (PDF Pages 17 & 18) - With Bespoke Luxury Photography ---
     {
         "id": 53,
         "category": "facial",
@@ -596,7 +593,7 @@ treatments = [
         "pressure": "Gentle Facial",
         "title": "Bali Aroma Facial",
         "desc": "Custom facial therapy blending pure botanical aromatherapy oils tailored to your exact skin type. Relieves facial stress, unblocks pores, deeply rehydrates dry skin, and boosts youthful micro-circulation.",
-        "img": "/assets/treatments/spa_facial.jpg"
+        "img": "/assets/treatments/bali_aroma_facial.jpg"
     },
     {
         "id": 54,
@@ -607,7 +604,7 @@ treatments = [
         "pressure": "Anti-Aging Facial",
         "title": "Red Wine Facial",
         "desc": "Antioxidant-dense blend of natural red wine polyphenols and grape seed extracts. Cleanses deep pores, fights fine lines and aging, suppresses acne breakouts with natural antiseptics, and produces radiant skin.",
-        "img": BASE + "2b82e488ef1e6473f44dab4e672dbfb5.jpg"
+        "img": "/assets/treatments/red_wine_facial.jpg"
     },
     {
         "id": 55,
@@ -618,10 +615,10 @@ treatments = [
         "pressure": "Brightening Facial",
         "title": "Thai Whitening Spa Facial",
         "desc": "Specialized Thai facial ritual using gentle botanical equipment and whitening herbal actives. Fades dark spots and sun pigmentation, eliminates blackheads and whiteheads, and reveals clearer, luminous skin.",
-        "img": "/assets/facial_treatment.png"
+        "img": "/assets/treatments/thai_whitening_facial.jpg"
     },
 
-    # --- SPA PEDICURES (PDF Page 18) ---
+    # --- SPA PEDICURES (PDF Page 18) - With Bespoke Luxury Photography ---
     {
         "id": 56,
         "category": "pedicure",
@@ -631,7 +628,7 @@ treatments = [
         "pressure": "Relaxing Footwork",
         "title": "Spa Pedicure",
         "desc": "Complete classic pedicure featuring an aromatic foot soak, expert nail trimming, cuticle grooming, heel buffing, gentle exfoliation, and relaxing pressure point foot massage.",
-        "img": "/assets/treatments/pedicure.jpg"
+        "img": "/assets/treatments/citrus_pedicure.jpg"
     },
     {
         "id": 57,
@@ -642,7 +639,7 @@ treatments = [
         "pressure": "Therapeutic Footwork",
         "title": "Crystal Spa Pedicure",
         "desc": "Sensory heat-retaining crystal jelly foot bath that envelops tired feet in warm soothing comfort. Melts muscle fatigue and calluses, followed by crystal polish scrub and nourishing foot massage.",
-        "img": "/assets/pedicure_treatment.jpg"
+        "img": "/assets/treatments/citrus_pedicure.jpg"
     },
     {
         "id": 58,
@@ -653,7 +650,7 @@ treatments = [
         "pressure": "Refreshing Footwork",
         "title": "Citrus Spa Pedicure",
         "desc": "Refreshing foot ceremony infused with fresh citrus slices, Vitamin C, and invigorating citrus essential oils. Brightens tired feet, stimulates circulation, eliminates odor, and leaves skin refreshed.",
-        "img": BASE + "8da7090e9a07de2a8280f189fc9935a3.jpg"
+        "img": "/assets/treatments/citrus_pedicure.jpg"
     },
 
     # --- HEALING & SPECIALTY RITUALS ---
@@ -677,15 +674,6 @@ treatments = [
         "pressure": "Gentle",
         "title": "Bali Coconut Body Polish & Wrap",
         "desc": "Traditional Balinese coconut cream polish and organic herbal cocoon wrap. Gently sloughs away environmental impurities, deeply seals in hydration, and restores complete full-body radiance.",
-        "img": BASE + "24786c6a638f68159b8e75cb1e3813ab.jpg"
+        "img": "/assets/treatments/almond_milk_wrap.jpg"
     }
 ]
-
-print(f"Total treatments defined: {len(treatments)}")
-
-# Check category counts
-cat_counts = {}
-for t in treatments:
-    c = t["category"]
-    cat_counts[c] = cat_counts.get(c, 0) + 1
-print("Category counts:", cat_counts)
